@@ -1,0 +1,4 @@
+author = Crimson
+version = 0.5.3
+displayName = Crim
+homepage = https://discord.gg/C4RZwz8
