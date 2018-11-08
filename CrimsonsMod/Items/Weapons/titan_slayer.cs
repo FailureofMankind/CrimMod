@@ -36,53 +36,13 @@ namespace CrimsonsMod.Items.Weapons
         }
 
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
-		{
-			if (type == ProjectileID.UnholyArrow) 
-			{
-				type = mod.ProjectileType("unholy_proj");
-			}
-			if (type == ProjectileID.FrostburnArrow)
-			{
-				type = mod.ProjectileType("frost_proj");
-			}
-			if (type == ProjectileID.BoneArrow)
-			{
-				type = mod.ProjectileType("bone_proj");
-			}
-			if (type == 5) // jester arrow
-			{
-				type = mod.ProjectileType("jester_proj");
-			}
-			if (type == ProjectileID.HolyArrow)
-			{
-				type = mod.ProjectileType("holy_proj");
-			}
-			if (type == ProjectileID.CursedArrow) 
-			{
-				type = mod.ProjectileType("cursed_proj");
-			}
-			if (type == ProjectileID.IchorArrow) 
-			{
-				type = mod.ProjectileType("ichor_proj");
-			}
-			if (type == ProjectileID.HellfireArrow) 
-			{
-				type = 485;
-			}
-			if (type == ProjectileID.VenomArrow) 
-			{
-				type = mod.ProjectileType("venom_proj");
-			}
-			if (type == 639) //luminite arrow
-			{
-				type = mod.ProjectileType("luminite_proj");
-			}
-            
-            
-            return true; // return true to allow tmodloader to call Projectile.NewProjectile as normal
-		
+		{		
+           int a = Projectile.NewProjectile(position.X, position.Y, speedX, speedY, type, damage, knockBack, player.whoAmI, 0f, 0f);
+           Main.projectile[a].penetrate = 1;
+           Main.projectile[a].ranged = true;
         
-        
+			return false; // return true to allow tmodloader to call Projectile.NewProjectile as normal
+
         }
 
 

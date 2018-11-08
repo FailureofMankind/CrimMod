@@ -42,7 +42,9 @@ namespace CrimsonsMod.Items.corruption
 				for (int i = 0; i < numberProjectiles; i++)
 				{
 					Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedBy(MathHelper.Lerp(-rotation, rotation, i / (numberProjectiles - 1))) * .4f; // This defines the projectile roatation and speed. .4f == projectile speed
-					Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, type, damage, knockBack, player.whoAmI);
+					int a = Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, type, damage, knockBack, player.whoAmI);
+					Main.projectile[a].magic = true;
+					Main.projectile[a].melee = false;
 				}
 				return false;
 			}
