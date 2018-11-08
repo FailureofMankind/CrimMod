@@ -15,7 +15,7 @@ namespace CrimsonsMod.Items.ArmorExtension
 		{
 			base.SetStaticDefaults();
 			DisplayName.SetDefault("Molten Headgear");
-			Tooltip.SetDefault("Increased ranged damage by 14%");
+			Tooltip.SetDefault("Increased ranged damage by 5%");
 		}
 
 		public override void SetDefaults()
@@ -29,7 +29,7 @@ namespace CrimsonsMod.Items.ArmorExtension
 
 		public override void UpdateEquip(Player player)
 		{
-			player.rangedDamage *= 1.14f;
+			player.rangedDamage *= 1.05f;
 		}
 		
         
@@ -41,8 +41,8 @@ namespace CrimsonsMod.Items.ArmorExtension
 
 		public override void UpdateArmorSet(Player player)
 		{
-			player.setBonus = "35% increased ranged critical strike chance\n45% chance to not consume ammo";
-			player.rangedCrit += 35;
+			player.setBonus = "10% increased ranged damage\n45% chance to not consume ammo";
+			player.rangedDamage *= 1.10f;
 
             player.ammoCost75 = true; //25% reduced ammo usage
             player.ammoCost80 = true;//20% reduced ammo usage   

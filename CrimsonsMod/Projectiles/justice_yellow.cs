@@ -26,7 +26,7 @@ namespace CrimsonsMod.Projectiles
 			projectile.friendly = true;
 			projectile.magic = true;
 			projectile.penetrate = 1;
-			projectile.timeLeft = 800;
+			projectile.timeLeft = 180;
 			projectile.light = 1f;
 			projectile.extraUpdates = 1;        
     
@@ -36,7 +36,7 @@ namespace CrimsonsMod.Projectiles
 
         public override void Kill(int timeLeft)
         {
-                Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, 0, 0, mod.ProjectileType("justice_yellow_back"), projectile.damage, projectile.knockBack, Main.myPlayer, 0f, 0f); //Spawning a projectile
+            Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, 0, 0, mod.ProjectileType("justice_yellow_back"), projectile.damage, projectile.knockBack, Main.myPlayer, 0f, 0f); //Spawning a projectile
         }
 
     }
