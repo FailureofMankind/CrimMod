@@ -29,7 +29,6 @@ namespace CrimsonsMod.Items.ArmorExtension
 
 		public override void UpdateEquip(Player player)
 		{
-			player.magicDamage *= 1.06f;
 		}
 		
         
@@ -41,9 +40,9 @@ namespace CrimsonsMod.Items.ArmorExtension
 
 		public override void UpdateArmorSet(Player player)
 		{
-			player.setBonus = "12% increased magic damage and critical strike chance\nMana flower effect\n'How does one see through this?'";
-			player.magicCrit += 16;
-			player.magicDamage *= 1.12f;
+			player.setBonus = "10% increased magic damage and critical strike chance\nMana flower effect\n'How does one see through this?'";
+			player.magicCrit += 10;
+			player.magicDamage *= 1.10f;
             
             player.manaFlower = true;
 

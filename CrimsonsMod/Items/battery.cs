@@ -26,7 +26,7 @@ namespace CrimsonsMod.Items
 
 
 
-		public override void AddRecipes()
+		/*public override void AddRecipes()
 		{
 			ModRecipe recipe = new ModRecipe(mod);
 			recipe.AddIngredient(null, "sands_of_magic", 2);
@@ -34,6 +34,6 @@ namespace CrimsonsMod.Items
 			recipe.AddTile(TileID.Anvils);
 			recipe.SetResult(this, 6);
 			recipe.AddRecipe();
-		}
+		}*/
 	}
 }

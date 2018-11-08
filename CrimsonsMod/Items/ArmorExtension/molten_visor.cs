@@ -41,11 +41,11 @@ namespace CrimsonsMod.Items.ArmorExtension
 
 		public override void UpdateArmorSet(Player player)
 		{
-			player.setBonus = "13% increased thrown critical strike chance\n50% chance to not consume thrown items\nTripled throwing velocity!";
+			player.setBonus = "13% increased thrown critical strike chance\n50% chance to not consume thrown items\nIncreased throwing velocity";
 			player.thrownCrit += 13;
             player.thrownCost50 = true; //50% chance not to consume thrown item
 
-            player.thrownVelocity *= 4f;
+            player.thrownVelocity *= 5f;
  		}
 
 		public override void ArmorSetShadows(Player player)

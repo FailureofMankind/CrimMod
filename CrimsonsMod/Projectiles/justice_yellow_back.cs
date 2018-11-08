@@ -25,7 +25,7 @@ namespace CrimsonsMod.Projectiles
 			projectile.friendly = true;
 			projectile.magic = true;
 			projectile.penetrate = -1;
-			projectile.timeLeft = 6000;
+			projectile.timeLeft = 10000;
             projectile.tileCollide = false;
 			projectile.light = 1f;
 			projectile.extraUpdates = 1;        

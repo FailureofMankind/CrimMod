@@ -40,9 +40,9 @@ namespace CrimsonsMod.Items.Weapons.shortswords
 			target.AddBuff(31, 300); //buff id confused
 
 
-			for (int i = 0; i<Main.rand.Next(5, 35); i++)
+			for (int i = 0; i< 10 ; i++)
             {
-            Projectile.NewProjectile(player.position.X, (int)(player.position.Y + 20), Main.rand.Next(-40, 40), Main.rand.Next(-40, 40), 131, damage, knockback, player.whoAmI, 0f, 0f);
+            Projectile.NewProjectile(target.position.X, target.position.Y, 0, 0, 131, damage, knockback, player.whoAmI, 0f, 0f);
 			}
 		}
 
