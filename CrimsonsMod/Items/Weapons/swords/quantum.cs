@@ -11,7 +11,7 @@ namespace CrimsonsMod.Items.Weapons.swords
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Quantum");
-			Tooltip.SetDefault("'simultaneous outcomes...'\nEvery vanilla imbues will have different effects\nSharpened buff will have 'interesting' effect");
+			Tooltip.SetDefault("'simultaneous outcomes...'\nVanilla imbues will have different effects");
 		}
 		public override void SetDefaults()
 		{
@@ -26,7 +26,7 @@ namespace CrimsonsMod.Items.Weapons.swords
 			item.useStyle = 1;
 			item.knockBack = 9;
             item.value = Item.sellPrice(0, 12, 0, 0);
-			item.rare = 5;
+			item.rare = 6;
 			item.UseSound = SoundID.Item1;
             item.autoReuse = true;            
 			item.shoot = mod.ProjectileType("blank");
@@ -39,34 +39,35 @@ namespace CrimsonsMod.Items.Weapons.swords
         {
             if (player.HasBuff(71))//venom imbue
             {
-				item.shoot = 378;
-				item.damage = 100;
-				imbueType = 0;
-				item.useTime = 13;
-				item.useAnimation = 13;
+				item.shoot = 379;
+				item.damage = 65;
+				imbueType = 1;
+				item.useTime = 20;
+				item.useAnimation = 20;
             }
             if (player.HasBuff(73))//cursed inferno imbue
             {
 				imbueType = 1;
 				item.shoot = 95;
-				item.damage = 65;
-				item.useTime = 25;
-				item.useAnimation = 25;
+				item.damage = 40;
+				item.useTime = 35;
+				item.useAnimation = 35;
             }
             if (player.HasBuff(74))//fire imbue
             {
-				imbueType = 1;
+				imbueType = 0;
 				item.shoot = 15;
-				item.useTime = 18;
-				item.useAnimation = 18;
+				item.useTime = 8;
+				item.useAnimation = 30;
+				item.damage = 30;
             }
             if (player.HasBuff(75))//gold imbue
             {
 				imbueType = 2;
 				item.shoot = 242; //high velocity bullet oof
-				item.damage = 50;
-				item.useTime = 10;
-				item.useAnimation = 10;
+				item.damage = 18;
+				item.useTime = 20;
+				item.useAnimation = 20;
 
             }
             if (player.HasBuff(76))//ichor imbue
@@ -74,8 +75,8 @@ namespace CrimsonsMod.Items.Weapons.swords
 				imbueType = 1;
 				item.shoot = 524;
 				item.damage = 40;
-				item.useTime = 15;
-				item.useAnimation = 15;
+				item.useTime = 24;
+				item.useAnimation = 24;
             }
             if (player.HasBuff(77))//nanites imbue
             {
@@ -83,38 +84,44 @@ namespace CrimsonsMod.Items.Weapons.swords
 				item.shoot = 440;
 				item.useTime = 8;
 				item.useAnimation = 8;
-				item.damage = 70;
+				item.damage = 40;
             }
             if (player.HasBuff(78))//confetti imbue
             {
+				item.damage = 20;
 				imbueType = 2;
 				item.shoot = 417;
-				item.useTime = 45;
-				item.useAnimation = 45;
+				item.useTime = 35;
+				item.useAnimation = 35;
 			}
             if (player.HasBuff(79))//poison imbue
             {
-				imbueType = 0;
+				imbueType = 2;
 				item.shoot = 523;
 				item.useTime = 15;
 				item.useAnimation = 15;
+				item.damage = 50;
             }
-            if (player.HasBuff(159))//sharpened imbue
-            {
-				imbueType = 3;
-            }
-			if(!player.HasBuff(71) && !player.HasBuff(73) && !player.HasBuff(74) && !player.HasBuff(75) && !player.HasBuff(76) && !player.HasBuff(77) && !player.HasBuff(78) && !player.HasBuff(79) && !player.HasBuff(159))
+
+			if(!player.HasBuff(71) && !player.HasBuff(73) && !player.HasBuff(74) && !player.HasBuff(75) && !player.HasBuff(76) && !player.HasBuff(77) && !player.HasBuff(78) && !player.HasBuff(79))
             {
 				imbueType = 0;
-				item.damage = 34;
-				item.shoot = mod.ProjectileType("blank");
-				item.useTime = 30;
-				item.useAnimation = 30;
+				item.damage = 20;
+				item.shoot = 173;
+				item.useTime = 15;
+				item.useAnimation = 50;
             }       
         }
         
 		public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
 		{
+			if(imbueType == 0)
+			{
+				int ech = Projectile.NewProjectile(position.X, position.Y, speedX, speedY, type, damage, knockBack, player.whoAmI);
+				Main.projectile[ech].melee = true;
+				return false;
+			}
+
 			if(imbueType == 1)
 			{
 				float numberProjectiles = 5; // This defines how many projectiles to shot
@@ -125,6 +132,7 @@ namespace CrimsonsMod.Items.Weapons.swords
 					Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedBy(MathHelper.Lerp(-rotation, rotation, i / (numberProjectiles - 1))) * .4f; // This defines the projectile roatation and speed. .4f == projectile speed
 					int a = Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, type, damage, knockBack, player.whoAmI);
 					Main.projectile[a].melee = true;
+					Main.projectile[a].penetrate = 1;
 	
 				}
 				return false;
@@ -157,17 +165,6 @@ namespace CrimsonsMod.Items.Weapons.swords
 			
 				return false;			
 			}
-			if(imbueType == 3)
-			{
-				Projectile.NewProjectile(Main.MouseWorld.X, Main.MouseWorld.Y, 8, 0, type, damage, knockBack, player.whoAmI);
-				Projectile.NewProjectile(Main.MouseWorld.X, Main.MouseWorld.Y, -8, 0, type, damage, knockBack, player.whoAmI);
-
-				Projectile.NewProjectile(Main.MouseWorld.X, Main.MouseWorld.Y, 6, 6, type, damage, knockBack, player.whoAmI);
-				Projectile.NewProjectile(Main.MouseWorld.X, Main.MouseWorld.Y, -6, -6, type, damage, knockBack, player.whoAmI);
-				Projectile.NewProjectile(Main.MouseWorld.X, Main.MouseWorld.Y, -6, 6, type, damage, knockBack, player.whoAmI);
-				Projectile.NewProjectile(Main.MouseWorld.X, Main.MouseWorld.Y, 6, -6, type, damage, knockBack, player.whoAmI);
-				return false;			
-			}
 
 			else
 			{
@@ -181,9 +178,12 @@ namespace CrimsonsMod.Items.Weapons.swords
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(null, "GrayMatter");
             recipe.AddIngredient(null, "SkyBlade");
-            recipe.AddIngredient(null, "purity_shard");
+            recipe.AddIngredient(null, "purity_shard", 50);
             recipe.AddIngredient(ItemID.DarkShard);
             recipe.AddIngredient(ItemID.LightShard);
+            recipe.AddIngredient(ItemID.SoulofMight, 10);
+            recipe.AddIngredient(ItemID.SoulofSight, 10);
+            recipe.AddIngredient(ItemID.SoulofFright, 10);
 			recipe.AddTile(TileID.MythrilAnvil);
             recipe.SetResult(this);
             recipe.AddRecipe();

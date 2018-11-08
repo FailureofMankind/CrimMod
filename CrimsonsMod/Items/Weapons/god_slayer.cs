@@ -55,10 +55,6 @@ namespace CrimsonsMod.Items.Weapons
                 float SpeedY = num17 + (float)Main.rand.Next(-40, 41) * 0.02f;  //this defines the projectile Y position speed and randomnes
 
                 Projectile.NewProjectile(vector2_1.X, vector2_1.Y, SpeedX, SpeedY, 645, damage, knockBack, Main.myPlayer, 0.0f, (float)Main.rand.Next(5));
-                Projectile.NewProjectile(vector2_1.X, vector2_1.Y, SpeedX, SpeedY, 711, damage, knockBack, Main.myPlayer, 0.0f, (float)Main.rand.Next(5));
-                Projectile.NewProjectile(vector2_1.X, vector2_1.Y, SpeedX, SpeedY, 660, damage, knockBack, Main.myPlayer, 0.0f, (float)Main.rand.Next(5));
-                Projectile.NewProjectile(vector2_1.X, vector2_1.Y, SpeedX, SpeedY, 503, damage, knockBack, Main.myPlayer, 0.0f, (float)Main.rand.Next(5));
-                Projectile.NewProjectile(vector2_1.X, vector2_1.Y, SpeedX, SpeedY, 439, damage, knockBack, Main.myPlayer, 0.0f, (float)Main.rand.Next(5));
 
            
            
