@@ -38,6 +38,7 @@ namespace CrimsonsMod.Tiles
 			disableSmartCursor = true;
 			adjTiles = new int[]{ TileID.Torches };
 			torch = true;
+			drop = mod.ItemType("ManganeseTorch");
 		}
 
 		public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b)

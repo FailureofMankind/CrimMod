@@ -30,7 +30,7 @@ namespace CrimsonsMod.Items.ferrium
 			item.shootSpeed = 16f;
 			item.shoot = mod.ProjectileType("EmberProj");
 			item.knockBack = 2.5f;
-			item.damage = 23;
+			item.damage = 18;
 			item.rare = 4;
 
 			item.melee = true;

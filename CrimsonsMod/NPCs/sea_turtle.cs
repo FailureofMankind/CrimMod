@@ -29,7 +29,7 @@ namespace CrimsonsMod.NPCs
 		    npc.scale = 1.2f;
 			npc.width = 80;
 			npc.height = 80;
-			npc.damage =20;
+			npc.damage = 20;
 			npc.defense = 5;
 			npc.lifeMax = 2100;
 			npc.HitSound = SoundID.NPCHit25;
@@ -89,11 +89,20 @@ namespace CrimsonsMod.NPCs
             }
         }				
 
+        int counterBoi = 0;
 		private void Attack()  //set of moves the boss will do
         {
             int phase = 0; //the type of attack
-            
-            
+            counterBoi++;
+            if(counterBoi > 600)
+            {
+                phase++;
+                counterBoi = 0;
+            }
+            if(phase > 3)
+            {
+                phase = 0;
+            }
         
             if(phase == 0)
             {

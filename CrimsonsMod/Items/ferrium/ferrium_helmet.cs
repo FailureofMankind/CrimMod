@@ -15,7 +15,7 @@ namespace CrimsonsMod.Items.ferrium
 		{
 			base.SetStaticDefaults();
 			DisplayName.SetDefault("Ferrium Helmet");
-			Tooltip.SetDefault("Increased max minions by 3\n");
+			Tooltip.SetDefault("Increased melee critical strike chance by 15%\n");
 		}
 
 		public override void SetDefaults()
@@ -29,10 +29,7 @@ namespace CrimsonsMod.Items.ferrium
 
 		public override void UpdateEquip(Player player)
 		{
-			player.thrownCrit += 10;
-			player.meleeCrit += 10;
-			player.rangedCrit += 10;
-			player.magicCrit += 10;
+			player.meleeCrit += 15;
 		}
 		
         
@@ -44,20 +41,35 @@ namespace CrimsonsMod.Items.ferrium
 
 		public override void UpdateArmorSet(Player player)
 		{
-			player.setBonus = "15% increased damage\nIncreased life and mana regeneration\nMelee weapons set enemies ablaze when hit by the blade\nYou take more damage";
-			player.thrownDamage *= 1.15f;
-			player.meleeDamage *= 1.15f;
-			player.magicDamage *= 1.15f;
-			player.rangedDamage *= 1.15f;
-			player.minionDamage *= 1.15f;
+			player.setBonus = "10% increased damage\nIncreased life and mana regeneration\nMelee weapons set enemies ablaze when hit by the blade only when health is above 50%\nYou take more damage when your health is above 50%, and take less damage under 50%";
+			player.thrownDamage *= 1.10f;
+			player.meleeDamage *= 1.10f;
+			player.magicDamage *= 1.10f;
+			player.rangedDamage *= 1.10f;
+			player.minionDamage *= 1.10f;
 
 			player.lifeRegen += 3;
 			player.manaRegen += 25;
 
-			player.endurance = -1.3f;
+			if(player.statLife > (player.statLifeMax * 0.5))
+			{
+				player.endurance = -1.3f;
+			}
+			if(player.statLife < (player.statLifeMax * 0.5))
+			{
+				player.endurance += 0.3f;
+			}
 
 			CrimsonPlayer modplayer = player.GetModPlayer<CrimsonPlayer>(mod);				//refer to the CrimsonPlayer file
-			modplayer.ferrium = true;
+			if(player.statLife > (player.statLifeMax * 0.5))
+			{
+				modplayer.ferrium = true;
+			}
+			else
+			{
+				modplayer.ferrium = false;
+			}
+
 
         
 		

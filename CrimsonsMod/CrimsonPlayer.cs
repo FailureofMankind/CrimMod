@@ -44,7 +44,8 @@ namespace CrimsonsMod
         {
             if(ferrium)
             {
-                Projectile.NewProjectile(target.Center.X, target.Center.Y, 0, 0, 296, damage, 0, Main.myPlayer); //Spawning a projectile
+                int a = Projectile.NewProjectile(target.Center.X, target.Center.Y, 0, 0, 296, (int)(damage * 0.7), 0, Main.myPlayer); //Spawning a projectile
+                Main.projectile[a].melee = true;
             }
         
         }

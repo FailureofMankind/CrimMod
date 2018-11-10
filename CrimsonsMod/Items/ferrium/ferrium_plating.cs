@@ -29,14 +29,14 @@ namespace CrimsonsMod.Items.ferrium
 			ModRecipe recipe = new ModRecipe(mod);
 			recipe.AddIngredient(null, "ferrium_ore", 3);
 			recipe.AddIngredient(ItemID.IronBar, 1);
-			recipe.SetResult(this);
+			recipe.SetResult(this, 2);
 			recipe.AddTile(17);
 			recipe.AddRecipe();
 
             ModRecipe recipe1 = new ModRecipe(mod);
 			recipe1.AddIngredient(null, "ferrium_ore", 3);
 			recipe1.AddIngredient(ItemID.LeadBar, 1);
-			recipe1.SetResult(this);
+			recipe1.SetResult(this, 2);
 			recipe1.AddTile(17);
 			recipe1.AddRecipe();
 
