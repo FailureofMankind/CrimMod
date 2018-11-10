@@ -21,8 +21,8 @@ namespace CrimsonsMod.Items.ferrium
             item.ranged = true;
             item.width = 64;
             item.height = 64;
-            item.useTime = 34;
-            item.useAnimation = 34;
+            item.useTime = 50;
+            item.useAnimation = 50;
             item.useStyle = 5;
             item.shoot = 3;
             item.useAmmo = AmmoID.Arrow;

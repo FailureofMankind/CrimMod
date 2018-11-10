@@ -12,8 +12,8 @@ namespace CrimsonsMod.Items.manganese
 			item.maxStack = 999;
 			item.useTurn = true;
 			item.autoReuse = true;
-			item.useAnimation = 15;
-			item.useTime = 7;
+			item.useAnimation = 3;
+			item.useTime = 3;
 			item.useStyle = 1;
 			item.rare = 1;
 			item.consumable = true;
@@ -23,7 +23,7 @@ namespace CrimsonsMod.Items.manganese
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Manganese Brick Wall");
-			Tooltip.SetDefault("Some filling to keep those monsters out");
+			Tooltip.SetDefault("'Some filling to keep those monsters out'\nintentionally sped up use time because placing walls are so annoying and tiring!");
 		}
 		
 		public override void AddRecipes()

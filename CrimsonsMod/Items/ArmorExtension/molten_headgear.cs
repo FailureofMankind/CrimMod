@@ -41,8 +41,34 @@ namespace CrimsonsMod.Items.ArmorExtension
 
 		public override void UpdateArmorSet(Player player)
 		{
-			player.setBonus = "10% increased ranged damage\n45% chance to not consume ammo";
-			player.rangedDamage *= 1.10f;
+			player.setBonus = "Ranged damage increases as health decreases\n45% chance to not consume ammo";
+
+			if(player.statLife <= (player.statLifeMax * 0.1) )
+			{
+				player.rangedDamage *= 1.25f;
+			}
+			if(player.statLife > (player.statLifeMax * 0.1) && player.statLife <= (player.statLifeMax * 0.3))
+			{
+				player.rangedDamage *= 1.20f;
+			}
+			if(player.statLife > (player.statLifeMax * 0.3) && player.statLife <= (player.statLifeMax * 0.5))
+			{
+				player.rangedDamage *= 1.15f;
+			}
+			if(player.statLife > (player.statLifeMax * 0.5) && player.statLife <= (player.statLifeMax * 0.7))
+			{
+				player.rangedDamage *= 1.10f;
+			}
+			if(player.statLife > (player.statLifeMax * 0.7) && player.statLife <= (player.statLifeMax * 0.9))
+			{
+				player.rangedDamage *= 1.05f;
+			}
+			if(player.statLife > (player.statLifeMax * 0.9) && player.statLife <= player.statLifeMax)
+			{
+				player.rangedDamage *= 1.01f;
+			}
+			
+			
 
             player.ammoCost75 = true; //25% reduced ammo usage
             player.ammoCost80 = true;//20% reduced ammo usage   

@@ -39,7 +39,7 @@ namespace CrimsonsMod.Items.Weapons
 		public override void AddRecipes()
 		{
 			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(ItemID.MythrilBar);
+			recipe.AddIngredient(ItemID.OrichalcumBar);
 			recipe.AddTile(TileID.Anvils);
 			recipe.SetResult(this, 100);
 			recipe.AddRecipe();

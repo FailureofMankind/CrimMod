@@ -15,7 +15,7 @@ namespace CrimsonsMod.Items.ferrium
 		}
 		public override void SetDefaults()
 		{
-			item.damage = 18;
+			item.damage = 16;
 			item.thrown = true;
 			item.width = 52;
 			item.height = 52;
@@ -39,7 +39,6 @@ namespace CrimsonsMod.Items.ferrium
 		public override void AddRecipes()
 		{
 			ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.HellstoneBar, 1);
             recipe.AddIngredient(null, "ferrium_plating", 2);
             recipe.AddTile(TileID.Anvils);  //this is where to craft the item ,WorkBenches = all WorkBenches    Anvils = all anvils , MythrilAnvil = Mythril Anvil and Orichalcum Anvil, Furnaces = all furnaces , DemonAltar = Demon Altar and Crimson Altar , TinkerersWorkbench = Tinkerer's Workbench
 			recipe.SetResult(this, 50);

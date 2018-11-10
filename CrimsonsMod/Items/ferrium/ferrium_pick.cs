@@ -36,6 +36,7 @@ namespace CrimsonsMod.Items.ferrium
 		public override void AddRecipes()
 		{
             ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(ItemID.HellstoneBar, 5);
             recipe.AddIngredient(null, "ferrium_plating", 15);
 			recipe.AddTile(TileID.Anvils);
             recipe.SetResult(this);
