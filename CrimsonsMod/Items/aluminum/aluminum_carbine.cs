@@ -16,7 +16,7 @@ namespace CrimsonsMod.Items.aluminum
 
         public override void SetDefaults()
         {
-            item.damage = 20;
+            item.damage = 6;
             item.noMelee = true;
             item.ranged = true;
             item.width = 72;

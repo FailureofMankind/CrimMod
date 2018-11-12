@@ -1,40 +1,42 @@
-using System;
-using Microsoft.Xna.Framework;
 using Terraria;
+using System;
 using Terraria.ID;
+using Microsoft.Xna.Framework;
 using Terraria.ModLoader;
 
-namespace CrimsonsMod.Items.Weapons
+namespace CrimsonsMod.Items.Weapons.staffs
 {
-	public class SkyBlade : ModItem
+	public class sapphire_stave : ModItem
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Sky Blade");
-			Tooltip.SetDefault("It rains down from the heavens...");
+			DisplayName.SetDefault("Sapphire Stave");	
+			Item.staff[item.type] = true; //this makes the useStyle animate as a staff instead of as a gun
 		}
+
 		public override void SetDefaults()
 		{
-			item.damage = 45;
-			item.melee = true;
-			item.width = 58;
-			item.height = 58;
+			item.damage = 38;
+			item.magic = true;
+			item.mana = 9;
+			item.width = 70;
+			item.height = 80;
 			item.useTime = 18;
 			item.useAnimation = 18;
-			item.useStyle = 1;
-			item.knockBack = 4;
-            item.value = Item.sellPrice(0, 12, 0, 0);
-			item.rare = 5;
-			item.UseSound = SoundID.Item1;
-            item.autoReuse = true;            
-			item.shootSpeed = 10f;
-			item.shoot = 660;
-
+			item.useStyle = 5;
+			item.noMelee = true;
+			item.knockBack = 2;
+			item.value = 10000;
+			item.rare = 6;
+			item.UseSound = SoundID.Item20;
+			item.autoReuse = true;
+			item.shoot = ProjectileID.SapphireBolt;
+			item.shootSpeed = 15f;
 		}
-        
+
 		public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
-            int numberProjectiles = 2;  //This defines how many projectiles to shot
+            int numberProjectiles = 1;  //This defines how many projectiles to shot
             for (int index = 0; index < numberProjectiles; ++index)
             {
                 Vector2 vector2_1 = new Vector2((float)((double)player.position.X + (double)player.width * 0.5 + (double)(Main.rand.Next(201) * -player.direction) + ((double)Main.mouseX + (double)Main.screenPosition.X - (double)player.position.X)), (float)((double)player.position.Y + (double)player.height * 0.5 - 600.0));   //this defines the projectile width, direction and position
@@ -48,26 +50,26 @@ namespace CrimsonsMod.Items.Weapons
                 float num15 = item.shootSpeed / num14;
                 float num16 = num12 * num15;
                 float num17 = num13 * num15;
-                float SpeedX = num16 + (float)Main.rand.Next(-1, 1) * 0.02f;  //this defines the projectile X position speed and randomnes
-                float SpeedY = num17 + (float)Main.rand.Next(-1, 1) * 3f;  //this defines the projectile Y position speed and randomnes
+                float SpeedX = num16 + (float)Main.rand.Next(-40, 41) * 0.02f;  //this defines the projectile X position speed and randomnes
+                float SpeedY = num17 + (float)Main.rand.Next(-1, 1) * 1f;  //this defines the projectile Y position speed and randomnes
                 int b = Projectile.NewProjectile(vector2_1.X, vector2_1.Y, SpeedX, SpeedY, type, damage, knockBack, Main.myPlayer, 0.0f, (float)Main.rand.Next(5));
-				Main.projectile[b].magic = false;
-				Main.projectile[b].melee = true;
+				Main.projectile[b].tileCollide = false;
+				Main.projectile[b].timeLeft = 120;
+				
 
             }
-            return false;
+            return true;
 		}
-		
+
 		public override void AddRecipes()
-        {
-            ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(null, "sunstrike");
-            recipe.AddIngredient(ItemID.SkyFracture);
-            recipe.AddIngredient(ItemID.SoulofFlight, 10);
-            recipe.AddIngredient(null, "AeroGel", 20);
+		{
+			ModRecipe recipe = new ModRecipe(mod);
+			recipe.AddIngredient(ItemID.SapphireStaff);
+			recipe.AddIngredient(ItemID.SoulofFright, 5);
 			recipe.AddTile(TileID.MythrilAnvil);
-            recipe.SetResult(this);
-            recipe.AddRecipe();
-        }
-	}
+			recipe.SetResult(this);
+			recipe.AddRecipe();
+		}
+	
+    }
 }

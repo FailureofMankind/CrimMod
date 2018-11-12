@@ -29,7 +29,7 @@ namespace CrimsonsMod.Items.aluminum
 			ModRecipe recipe = new ModRecipe(mod);
 			recipe.AddIngredient(null, "aluminum_ore", 3);
 			recipe.SetResult(this);
-			recipe.AddTile(77);
+			recipe.AddTile(17);
 			recipe.AddRecipe();
 
 

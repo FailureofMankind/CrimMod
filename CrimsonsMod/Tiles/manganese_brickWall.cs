@@ -10,6 +10,6 @@ namespace CrimsonsMod.Tiles
     {
         Main.wallHouse[Type] = true;
         drop = mod.ItemType("manganese_brickWall");
-	AddMapEntry(new Color(121, 233, 167));
+	AddMapEntry(new Color(46, 189, 137));
     }
 }}

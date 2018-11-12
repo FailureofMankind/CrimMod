@@ -13,7 +13,7 @@ namespace CrimsonsMod.Items.aluminum
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Bauxite Ore");			
-			Tooltip.SetDefault("Contains aluminum marbled in obsidian");
+			Tooltip.SetDefault("Contains aluminum marbled in obsidian\nMinimum pickaxe power: 55%");
 		}
 
 		public override void SetDefaults()
@@ -27,7 +27,7 @@ namespace CrimsonsMod.Items.aluminum
 			item.useTime = 10;
 			item.useStyle = 1;
 			item.consumable = true;
-			item.rare = 2;
+			item.rare = 1;
             item.value = Item.sellPrice(0, 0, 30, 0);
 			item.createTile = mod.TileType("aluminum_ore");
 		}

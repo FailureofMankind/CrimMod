@@ -28,8 +28,8 @@ namespace CrimsonsMod.Items.aluminum
 			item.useTime = 5;
 			item.shootSpeed = 15f;
 			item.knockBack = 5f;
-			item.damage = 20;
-			item.rare = 2;
+			item.damage = 13;
+			item.rare = 1;
 
 			item.melee = true;
 			item.channel = true;

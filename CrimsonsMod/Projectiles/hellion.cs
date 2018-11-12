@@ -24,7 +24,7 @@ namespace CrimsonsMod.Projectiles
 			projectile.friendly = true;
 			projectile.magic = true;
 			projectile.aiStyle = 0;
-			projectile.penetrate = 3;
+			projectile.penetrate = 1;
 			projectile.timeLeft = 800;
             projectile.alpha = 0;			
 			projectile.extraUpdates = 1;

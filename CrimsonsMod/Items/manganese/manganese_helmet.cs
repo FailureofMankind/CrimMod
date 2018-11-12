@@ -42,13 +42,7 @@ namespace CrimsonsMod.Items.manganese
 
 		public override void UpdateArmorSet(Player player)
 		{
-			player.setBonus = "10% increased damage\n25% increased movement speed\nProvides immunity poison\nAllows free movement in water";					
-			player.thrownDamage *= 1.10f;
-			player.meleeDamage *= 1.10f;
-			player.magicDamage *= 1.10f;
-			player.rangedDamage *= 1.10f;
-			player.minionDamage *= 1.10f;
-
+			player.setBonus = "25% increased movement speed\nProvides immunity to poison\nAllows free movement in water";					
             player.buffImmune[20] = true;            
 			
             player.moveSpeed *= 1.25f;

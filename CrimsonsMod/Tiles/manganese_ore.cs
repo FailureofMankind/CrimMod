@@ -17,7 +17,7 @@ namespace CrimsonsMod.Tiles
 			ModTranslation name = CreateMapEntryName();
 			name.SetDefault("Manganese Ore");
 			drop = mod.ItemType("manganese_ore");
-			AddMapEntry(new Color(121, 233, 167));
+			AddMapEntry(new Color(121, 233, 167), name);
 		}
 
 

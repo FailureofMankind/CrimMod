@@ -15,7 +15,7 @@ namespace CrimsonsMod.Items.Weapons.shortswords
 		}
 		public override void SetDefaults()
 		{
-			item.damage = 37;
+			item.damage = 23;
 			item.melee = true;
 			item.width = 40;
 			item.height = 40;
@@ -42,7 +42,14 @@ namespace CrimsonsMod.Items.Weapons.shortswords
 
 			for (int i = 0; i< 10 ; i++)
             {
-            Projectile.NewProjectile(target.position.X, target.position.Y, 0, 0, 131, damage, knockback, player.whoAmI, 0f, 0f);
+            Projectile.NewProjectile(target.position.X, target.position.Y, 0, 0, 131, (int)(damage * 0.6), knockback, player.whoAmI, 0f, 0f);
+			}
+			for (int i = 0; i< 30 ; i++)
+            {
+            Dust dust = Dust.NewDustDirect(target.position, target.width, target.height, 156);
+            dust.noGravity = true;
+            dust.velocity *= 5f;
+            dust.scale = 2f;
 			}
 		}
 

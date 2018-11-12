@@ -13,7 +13,7 @@ namespace CrimsonsMod.Items.aluminum
 		{
 			base.SetStaticDefaults();
 			DisplayName.SetDefault("Aluminum Legging");
-			Tooltip.SetDefault("5% decreased movement speed");
+			Tooltip.SetDefault("5% increased movement speed");
 		}
 
 		public override void SetDefaults()
@@ -21,13 +21,13 @@ namespace CrimsonsMod.Items.aluminum
 			item.width = 22;
 			item.height = 18;
 			item.value = 10000;
-			item.rare = 2;
-			item.defense = 4;
+			item.rare = 1;
+			item.defense = 2;
 		}
 
 		public override void UpdateEquip(Player player)
 		{
-            player.moveSpeed *= 0.95f;
+            player.moveSpeed *= 1.05f;
             
 		}
 

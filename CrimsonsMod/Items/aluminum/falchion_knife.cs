@@ -15,7 +15,7 @@ namespace CrimsonsMod.Items.aluminum
 		}
 		public override void SetDefaults()
 		{
-			item.damage = 16;
+			item.damage = 9;
 			item.melee = true;
 			item.width = 50;
 			item.height = 56;
@@ -25,7 +25,7 @@ namespace CrimsonsMod.Items.aluminum
 			item.useStyle = 1;
 			item.knockBack = 2;
             item.value = Item.sellPrice(0, 0, 80, 0);
-			item.rare = 2;
+			item.rare = 1;
 			item.UseSound = SoundID.Item1;
             item.autoReuse = true;            
 
@@ -40,14 +40,14 @@ namespace CrimsonsMod.Items.aluminum
         {
             if (player.altFunctionUse == 2)     //2 is right click
             {
-				item.damage = 32;			
+				item.damage = 16;			
                 item.useTime = 8;
                 item.useAnimation = 8;
 			    item.useStyle = 3;                
 			}
             if (player.altFunctionUse != 2)    
 			{
-				item.damage = 24;							
+				item.damage = 10;							
 				item.useTime = 16;
 				item.useAnimation = 16;
 			    item.useStyle = 1;                                
