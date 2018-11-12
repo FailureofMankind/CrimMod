@@ -13,7 +13,7 @@ namespace CrimsonsMod.Items.manganese
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Manganese Ore");			
-			Tooltip.SetDefault("Originated from the ocean beds");
+			Tooltip.SetDefault("Originated from the ocean beds\nMinimum pickaxe power: 35%");
 		}
 
 		public override void SetDefaults()

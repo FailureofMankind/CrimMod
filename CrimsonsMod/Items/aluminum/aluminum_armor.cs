@@ -13,7 +13,7 @@ namespace CrimsonsMod.Items.aluminum
 		{
 			base.SetStaticDefaults();
 			DisplayName.SetDefault("Aluminum Vest");
-			Tooltip.SetDefault("+50 max mana and life\nIncreased life regeneration\n5% decreased movement speed");
+			Tooltip.SetDefault("+50 max mana and life");
 		}
 
 		public override void SetDefaults()
@@ -21,16 +21,14 @@ namespace CrimsonsMod.Items.aluminum
 			item.width = 30;
 			item.height = 20;
 			item.value = 10000;
-			item.rare = 2;
-			item.defense = 7;
+			item.rare = 1;
+			item.defense = 3;
 		}
 
 		public override void UpdateEquip(Player player)
 		{
         	player.statLifeMax2 += 50;
 			player.statManaMax2 +=50; 
-			player.lifeRegen = 5;
-			player.moveSpeed *= 0.95f;
 		   
 		}
 

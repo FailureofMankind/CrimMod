@@ -8,7 +8,7 @@ using Terraria.ModLoader;
 
 namespace CrimsonsMod.Projectiles
 {
-    public class fire_blast : ModProjectile  
+    public class fire_blast1 : ModProjectile  
     { 
         public override void SetStaticDefaults()
         {
@@ -25,34 +25,34 @@ namespace CrimsonsMod.Projectiles
 			projectile.magic = true;
 			projectile.aiStyle = 34;
 			projectile.penetrate = -1;
-			projectile.timeLeft = 120;
+			projectile.timeLeft = 30;
 			projectile.alpha = 255;
 			projectile.extraUpdates = 1;
             projectile.light = 1f;
 
 
         }
+
+		int dustValue = 219;
+
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit) //When you hit an NPC
         {
-            target.immune[projectile.owner] = 5;
-            target.AddBuff(24, 800);        //onfire  
+            target.immune[projectile.owner] = 0;
 			Main.PlaySound(SoundID.Item74, projectile.position);        
 		
-            for (int i = 0; i<20; i++)
+			for (int i = 0; i<15; i++)
             {            
-                int dust = Dust.NewDust(projectile.position, projectile.width, projectile.height, 6);   //this adds a vanilla terraria dust to the projectile
+                int dust = Dust.NewDust(target.position, target.width, target.height, dustValue);   //this adds a vanilla terraria dust to the projectile
 				Main.dust[dust].velocity *= 10f;
 				Main.dust[dust].scale = 2f;
 				Main.dust[dust].noGravity = true;
             }
-			for (int i = 0; i<40; i++)
-            {            
-                int dust = Dust.NewDust(projectile.position, projectile.width, projectile.height, 228);   //this adds a vanilla terraria dust to the projectile
-				Main.dust[dust].velocity *= 6f;
-				Main.dust[dust].scale = 0.7f;
-				Main.dust[dust].noGravity = true;
-            }
 
+			dustValue++;
+			if(dustValue >= 223)
+			{
+				dustValue = 219;
+			}
 		}
 		
         public override void Kill(int timeLeft)        

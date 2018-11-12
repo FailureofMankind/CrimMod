@@ -12,11 +12,11 @@ namespace CrimsonsMod.Tiles
 			Main.tileMergeDirt[Type] = true;
 			Main.tileBlockLight[Type] = true;
 			Main.tileLighted[Type] = true;
-			minPick = 100;
+			minPick = 99;
 			ModTranslation name = CreateMapEntryName();
 			name.SetDefault("Ferrium Ore");
 			drop = mod.ItemType("ferrium_ore");
-			AddMapEntry(new Color(243, 240, 172));
+			AddMapEntry(new Color(243, 240, 172), name);
 		}
 
 		public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b)

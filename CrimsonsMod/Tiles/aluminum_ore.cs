@@ -16,7 +16,7 @@ namespace CrimsonsMod.Tiles
 				ModTranslation name = CreateMapEntryName();
 				name.SetDefault("Aluminum Ore");
 				drop = mod.ItemType("aluminum_ore");
-				AddMapEntry(new Color(200, 200, 200));
+				AddMapEntry(new Color(200, 200, 200), name);
 			}
 		
 		public override bool CanExplode(int i, int j)

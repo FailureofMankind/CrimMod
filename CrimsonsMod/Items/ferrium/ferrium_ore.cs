@@ -13,7 +13,7 @@ namespace CrimsonsMod.Items.ferrium
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Ferrium Ore");			
-			Tooltip.SetDefault("Seeped magma from the ocean floor");
+			Tooltip.SetDefault("Seeped magma from the ocean floor\nMinimum pickaxe power: 99%");
 		}
 
 		public override void SetDefaults()

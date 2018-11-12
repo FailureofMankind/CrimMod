@@ -13,7 +13,7 @@ namespace CrimsonsMod.Items.aluminum
 		{
 			base.SetStaticDefaults();
 			DisplayName.SetDefault("Aluminum Helmet");
-			Tooltip.SetDefault("15% increased magic and melee damage\n+2 increased max minions");
+			Tooltip.SetDefault("2% increased damage");
             
 		}
 
@@ -22,15 +22,17 @@ namespace CrimsonsMod.Items.aluminum
 			item.width = 30;
 			item.height = 28;
 			item.value = 10000;
-			item.rare = 2;
+			item.rare = 1;
 			item.defense = 3;
 		}
 
 		public override void UpdateEquip(Player player)
 		{
-			player.meleeDamage *= 1.15f;
-			player.magicDamage *= 1.15f;
-			player.maxMinions += 2;
+			player.meleeDamage *= 1.02f;
+			player.magicDamage *= 1.02f;
+			player.rangedDamage *= 1.02f;
+			player.thrownDamage *= 1.02f;
+			player.minionDamage *= 1.02f;
 		}
 		
         
@@ -42,17 +44,43 @@ namespace CrimsonsMod.Items.aluminum
 
 		public override void UpdateArmorSet(Player player)
 		{
-			player.setBonus = "5% increased damage\nYou are very heavy and fall faster\n12% increased damage reduction";
+			player.setBonus = "You are very heavy and fall faster\nDamage decreases as health decreases";
 			
-            player.thrownDamage *= 1.05f;
-			player.meleeDamage *= 1.05f;
-			player.magicDamage *= 1.05f;
-			player.rangedDamage *= 1.05f;
-			player.minionDamage *= 1.05f;
+			float damageMultiplier = 1;
+			if(player.statLife <= (player.statLifeMax * 0.1) )
+			{
+				damageMultiplier = 0.5f;
+			}
+			if(player.statLife > (player.statLifeMax * 0.1) && player.statLife <= (player.statLifeMax * 0.3) )
+			{
+				damageMultiplier = 0.6f;
+			}
+			if(player.statLife > (player.statLifeMax * 0.3) && player.statLife <= (player.statLifeMax * 0.5) )
+			{
+				damageMultiplier = 0.7f;
+			}
+			if(player.statLife > (player.statLifeMax * 0.5) && player.statLife <= (player.statLifeMax * 0.7) )
+			{
+				damageMultiplier = 0.8f;
+			}
+			if(player.statLife > (player.statLifeMax * 0.7) && player.statLife <= (player.statLifeMax * 0.9) )
+			{
+				damageMultiplier = 0.9f;
+			}
+			if(player.statLife > (player.statLifeMax * 0.9))
+			{
+				damageMultiplier = 1f;
+			}
+
+
+            player.thrownDamage *= damageMultiplier;
+			player.meleeDamage *= damageMultiplier;
+			player.magicDamage *= damageMultiplier;
+			player.rangedDamage *= damageMultiplier;
+			player.minionDamage *= damageMultiplier;
+			
 
             player.maxFallSpeed *= 1.30f;
-            
-            player.endurance *= 0.12f;
         }
 		
         public override void ArmorSetShadows(Player player)

@@ -35,7 +35,7 @@ namespace CrimsonsMod.Items.Weapons.shortswords
 		}
 		public override void OnHitNPC(Player player, NPC target, int damage, float knockback, bool crit)
         {
-            Projectile.NewProjectile(player.position.X, (int)(player.position.Y + 40), 0, 0, mod.ProjectileType("dagger_explosion"), damage, knockback, player.whoAmI, 0f, 0f);
+            Projectile.NewProjectile(target.position.X, target.position.Y, 0, 0, mod.ProjectileType("dagger_explosion"), damage, knockback, player.whoAmI, 0f, 0f);
         //kaboom
 		}
 

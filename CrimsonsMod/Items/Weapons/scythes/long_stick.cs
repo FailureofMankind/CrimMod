@@ -16,7 +16,7 @@ namespace CrimsonsMod.Items.Weapons.scythes
 		public override void SetDefaults()
 		{
             item.melee = true;
-            item.damage = 10;
+            item.damage = 6;
 			item.useTime = 10;   //How fast the Weapon is used.
             item.useAnimation = 10;     //How long the Weapon is used for.
             item.channel = true;

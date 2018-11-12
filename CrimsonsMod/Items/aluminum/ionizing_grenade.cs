@@ -15,7 +15,7 @@ namespace CrimsonsMod.Items.aluminum
 		}
 		public override void SetDefaults()
 		{
-			item.damage = 25;
+			item.damage = 15;
 			item.thrown = true;
 			item.width = 16;
 			item.height = 16;
@@ -25,7 +25,7 @@ namespace CrimsonsMod.Items.aluminum
 			item.useStyle = 1;
 			item.knockBack = 3;
             item.value = Item.sellPrice(0, 0, 1, 0);
-			item.rare = 2;
+			item.rare = 1;
 			item.UseSound = SoundID.Item1;
             item.autoReuse = false;   
 			item.shootSpeed = 9f;

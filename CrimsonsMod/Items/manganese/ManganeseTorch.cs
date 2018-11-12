@@ -31,6 +31,15 @@ namespace CrimsonsMod.Items.manganese
 			DisplayName.SetDefault("Manganese Torch");
 			Tooltip.SetDefault("Burns hot underwater, but can crumble away under certain circumstances, so be careful");
 		}
+		public override void HoldItem(Player player)
+		{
+			if (Main.rand.Next(player.itemAnimation > 0 ? 40 : 80) == 0)
+			{
+				Dust.NewDust(new Vector2(player.itemLocation.X + 16f * player.direction, player.itemLocation.Y - 14f * player.gravDir), 4, 4, 220);
+			}
+			Vector2 position = player.RotatedRelativePoint(new Vector2(player.itemLocation.X + 12f * player.direction + player.velocity.X, player.itemLocation.Y - 14f + player.velocity.Y), true);
+			Lighting.AddLight(position, 1f, 1f, 1f);
+		}
 
 		public override void PostUpdate()
 		{

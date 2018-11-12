@@ -4,7 +4,7 @@ using Terraria.ID;
 using Microsoft.Xna.Framework;
 using Terraria.ModLoader;
 
-namespace CrimsonsMod.Items.Weapons
+namespace CrimsonsMod.Items.Weapons.staffs
 {
 	public class icarus_lament : ModItem
 	{
@@ -17,7 +17,7 @@ namespace CrimsonsMod.Items.Weapons
 
 		public override void SetDefaults()
 		{
-			item.damage = 51;
+			item.damage = 37;
 			item.magic = true;
 			item.mana = 5;
 			item.width = 70;
