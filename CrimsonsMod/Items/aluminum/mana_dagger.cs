@@ -15,21 +15,22 @@ namespace CrimsonsMod.Items.aluminum
 		}
 		public override void SetDefaults()
 		{
-			item.damage = 8;
+			item.damage = 10;
 			item.magic = true;
-            item.mana = 7;
+            item.mana = 3;
 			item.width = 22;
 			item.height = 36;
-			item.useTime = 3;
-			item.useAnimation = 3;
+			item.useTime = 9;
+			item.useAnimation = 9;
 			item.noUseGraphic = true;
+			item.noMelee = true;
 			item.useStyle = 1;
 			item.knockBack = 0;
 			item.value = 10000;
 			item.rare = 1;
 			item.UseSound = SoundID.Item1;
 			item.autoReuse = true;
-			item.shootSpeed = 10f;
+			item.shootSpeed = 13f;
 			item.shoot = mod.ProjectileType ("mana_dagger");
 
 		}

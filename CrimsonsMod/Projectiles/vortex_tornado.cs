@@ -26,8 +26,8 @@ namespace CrimsonsMod.Projectiles
 			projectile.friendly = true;
 			projectile.thrown = true;
 			projectile.penetrate = -1;
-			projectile.timeLeft = 240;
-            projectile.alpha = 225;			
+			projectile.timeLeft = 480;
+            projectile.alpha = 100;			
 			projectile.extraUpdates = 1;
             projectile.light = 0.3f;
 
@@ -38,15 +38,15 @@ namespace CrimsonsMod.Projectiles
             double degWaveyBoi = (double) projectile.ai[1]; 
             double radWaveyBoi = degWaveyBoi * (Math.PI / 180);
 
-            projectile.position.X -= (int)(Math.Cos(radWaveyBoi * 5) * 5);
+            projectile.position.X -= (int)(Math.Cos(radWaveyBoi * 0.8) * 5);
 
-            projectile.rotation += 0.5f;
+            projectile.rotation += 1f;
 
-            if(Main.rand.Next(10) == 0)
+            if(Main.rand.Next(20) == 0)
             {
-            int a = Dust.NewDust(projectile.position, projectile.width, projectile.height, 230);   //this adds a vanilla terraria dust to the projectile
-            Main.dust[a].noGravity = true;  //this modify the scale of the first dust
-            Main.dust[a].velocity *= 0f; 
+                int a = Dust.NewDust(projectile.position, projectile.width, projectile.height, 230);   //this adds a vanilla terraria dust to the projectile
+                Main.dust[a].noGravity = true;  //this modify the scale of the first dust
+                Main.dust[a].velocity *= 0f; 
             }
         }
 		public override void OnHitNPC(NPC target, int damage, float knockBack, bool crit)

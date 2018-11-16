@@ -18,7 +18,7 @@ namespace CrimsonsMod.Items.Weapons
             item.damage = 12;
             item.noMelee = true;
             item.ranged = true;
-            item.width = 48;
+            item.width = 40;
             item.height = 26;
             item.useTime = 30;
             item.useAnimation = 30;
@@ -28,8 +28,8 @@ namespace CrimsonsMod.Items.Weapons
             item.knockBack = 3;
             item.value = Item.sellPrice(0, 0, 30, 0);
             item.rare = 0;
-            item.UseSound = SoundID.Item11;
-            item.autoReuse = true;
+            item.UseSound = SoundID.Item41;
+            item.autoReuse = false;
             item.shootSpeed = 3f;
 
         }

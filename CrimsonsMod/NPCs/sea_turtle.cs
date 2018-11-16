@@ -1,3 +1,5 @@
+//thancc lynx :D
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,7 +22,7 @@ namespace CrimsonsMod.NPCs
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Sea Turtle");
+			DisplayName.SetDefault("Turroise");
 			Main.npcFrameCount[npc.type] = 8;
 		}
 
@@ -42,6 +44,7 @@ namespace CrimsonsMod.NPCs
 			npc.aiStyle = 63;
 			animationType = 472;
 			npc.noTileCollide = true;
+            npc.netUpdate = true;
 		}
 	
 		public override void ScaleExpertStats(int numPlayers, float bossLifeScale)

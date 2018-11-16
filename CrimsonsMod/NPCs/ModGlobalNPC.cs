@@ -125,14 +125,6 @@ namespace CrimsonsMod.NPCs
                 }
             }
 
-            if (Main.player[Player.FindClosest(npc.position, npc.width, npc.height)].ZoneJungle && !Main.hardMode || npc.type == NPCID.GiantTortoise)  
-            {
-                if (Main.rand.Next(49) == 0) 
-                {
-                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("leaf_scythe"), 1);
-                }
-            }
-
 			if (npc.type == 35)
             {
                     Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("necromancer"), 1);
