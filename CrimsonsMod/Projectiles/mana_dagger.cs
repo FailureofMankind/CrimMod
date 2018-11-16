@@ -19,18 +19,18 @@ namespace CrimsonsMod.Projectiles
 
         public override void SetDefaults()
         {
+			projectile.CloneDefaults(48);
+			aiType = 48;
 			projectile.width = 22;
 			projectile.height = 36;
             projectile.scale = 0.6f;
 			projectile.friendly = true;
 			projectile.magic = true;
-			projectile.aiStyle = 1;
-            aiType = ProjectileID.Bullet;
-			projectile.penetrate = 1;
-			projectile.timeLeft = 15;
+			projectile.penetrate = 3;
+			projectile.timeLeft = 180;
             projectile.alpha = 100;			
 			projectile.extraUpdates = 1;
-            projectile.light = 1f;
+            projectile.light = 0.3f;
 
 
         }
@@ -38,7 +38,15 @@ namespace CrimsonsMod.Projectiles
         
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit) //When you hit an NPC
         {
-            Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, 20);
+			for (int i = 0; i<Main.rand.Next(12, 30); i++)
+            {
+            
+				Dust dust = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, 20);
+				dust.noGravity = true;
+				dust.scale = 0.6f;
+				dust.velocity *= 4f;
+            }                
+
         }
 
         public override void Kill(int timeLeft)        

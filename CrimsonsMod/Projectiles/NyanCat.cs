@@ -21,7 +21,7 @@ namespace CrimsonsMod.Projectiles
         {
 			projectile.width = 12;
 			projectile.height = 26;
-			projectile.aiStyle = 3;
+			projectile.aiStyle = 1;
 			projectile.friendly = true;
 			projectile.magic = true;
 			projectile.penetrate = -1;
@@ -34,7 +34,7 @@ namespace CrimsonsMod.Projectiles
         }
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit) //When you hit an NPC
         {
-            target.immune[projectile.owner] = 4;
+            target.immune[projectile.owner] = 0;
         }
 		
     }

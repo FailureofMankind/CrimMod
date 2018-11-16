@@ -33,7 +33,7 @@ namespace CrimsonsMod.Projectiles
 		public override void AI()
 		{
             Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, 0, 0, mod.ProjectileType("vortex_tornado"), projectile.damage, projectile.knockBack, Main.myPlayer, 0f, 0f); //Spawning a projectile                
-            projectile.position.Y -= 5; 
+            projectile.velocity.Y -= 1f; 
         }
         
     
