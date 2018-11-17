@@ -22,7 +22,6 @@ namespace CrimsonsMod.NPCs.tormentorBoss
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Tormentor of Souls");
-			Main.npcFrameCount[npc.type] = 10;
 		}
 
 		public override void SetDefaults()
@@ -32,7 +31,7 @@ namespace CrimsonsMod.NPCs.tormentorBoss
             npc.scale = 1.4f;
 			npc.damage = 30;
 			npc.defense = 4;
-			npc.lifeMax = 5000;
+			npc.lifeMax = 3500;
 			npc.HitSound = SoundID.NPCHit27;
 			npc.DeathSound = SoundID.NPCDeath22;
 			npc.boss = true;
@@ -50,13 +49,14 @@ namespace CrimsonsMod.NPCs.tormentorBoss
 		public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
         {
             npc.lifeMax = (int)(npc.lifeMax * 0.500f * bossLifeScale);
-            npc.damage = (int)(npc.damage * 0.6f);
+            npc.damage = (int)(npc.damage * 0.5f);
             npc.defense = (int)(npc.defense + (numPlayers / 5));
         }	
 
 		public override void AI()
         {
-            moveThyArse(); //fucking thrust that shit nibba
+            
+            moveSets(); //fucking thrust that shit nibba
 
             Target(); //Maximus Pedophilius
 
@@ -71,6 +71,96 @@ namespace CrimsonsMod.NPCs.tormentorBoss
             player = Main.player[npc.target]; // This will get the player target.
         }	
 
+        int timer0 = 0;
+        int timer1 = 0;
+        int timer2 = 0;
+        int timer3 = 0;
+        int attackMode = 0;
+        int maxAttackMode = 1;
+        int timerMax = 300;
+        private void moveSets()
+        {
+            //timer section
+            timer0++;
+            if(timer0 >= timerMax)
+            {
+                attackMode++;
+                timer0 = 0;
+            }
+            if(attackMode > maxAttackMode)
+            {
+                attackMode = 0;
+            }
+            if(npc.life < npc.lifeMax * 0.7 && npc.life > npc.lifeMax * 0.4)
+            {
+                timerMax = 180;
+            }
+            if(npc.life < npc.lifeMax * 0.4 && Main.expertMode)
+            {
+                maxAttackMode = 2;
+            }
+            //timer section
+
+            //attack mode: fly above player
+            if(attackMode == 0)
+            {
+                moveThyArse();
+
+                timer1++;
+                if(timer1 >= 60)
+                {
+                    shootBall();
+                    timer1 = 0;
+                }
+            }
+
+            //attack mode: dash and spray
+            if(attackMode == 1)
+            {
+                timer2++;
+                if(timer2 >= 60 && npc.life > npc.lifeMax * 0.4)
+                {
+                    dashyB0i();
+                    timer2 = 0;
+                }
+                if(timer2 >= 40 && npc.life <= npc.lifeMax * 0.4)
+                {
+                    dashyB0i();
+                    timer2 = 0;
+                }
+
+                npc.velocity.Y *= 0.9f;
+            }
+
+            //attack mode: swave yes
+            if(attackMode == 2)
+            {
+                hivemindCloneLmao();
+                timer3++;
+                if(timer3 >= 5)
+                {
+                    int lol = Projectile.NewProjectile(npc.Center.X, npc.Center.Y, Main.rand.Next(-10, 10), -5, mod.ProjectileType("tormentorShenaniganBall"), 7, 5, player.whoAmI, 0f, 0f);
+                    Main.projectile[lol].timeLeft = 480;
+                    timer3 = 0;
+                }
+            }
+        }
+
+        private void shootBall()
+        {
+            Vector2 velocityShoot = player.Center - npc.Center;
+            float magnitude = Magnitude(velocityShoot);
+            if(magnitude > 0)
+            {
+                velocityShoot *= 10f / magnitude;
+            } 
+            else
+            {
+                velocityShoot = new Vector2(0f, 10f);
+            }            
+            Projectile.NewProjectile(npc.Center.X, npc.Center.Y, velocityShoot.X, velocityShoot.Y, mod.ProjectileType("tormentorShenaniganBall"), 12, 5, player.whoAmI, 0f, 0f);
+        }
+        
 
         private void moveThyArse()
         {
@@ -116,6 +206,50 @@ namespace CrimsonsMod.NPCs.tormentorBoss
                 npc.velocity.X = velociCap * -1;
             }
         }
+        private void dashyB0i()
+        {
+            player = Main.player[npc.target];
+
+            Vector2 velocityShoot = player.Center - npc.Center;
+            float magnitude = Magnitude(velocityShoot);
+            if(magnitude > 0)
+            {
+                velocityShoot *= 30f / magnitude;
+            } 
+            else
+            {
+                velocityShoot = new Vector2(0f, 30f);
+            }            
+            npc.velocity = velocityShoot;
+
+            float numberProjectiles = 5; // This defines how many projectiles to shot
+            Vector2 p0sition = npc.position;
+            float rotation = MathHelper.ToRadians(60);
+            p0sition += Vector2.Normalize(velocityShoot) * 45f;
+            for (int i = 0; i < numberProjectiles; i++)
+            {
+                Vector2 perturbedSpeed = velocityShoot.RotatedBy(MathHelper.Lerp(-rotation, rotation, i / (numberProjectiles - 1))) * .4f; // This defines the projectile roatation and speed. .4f == projectile speed
+                Projectile.NewProjectile(p0sition.X, p0sition.Y, perturbedSpeed.X, perturbedSpeed.Y, mod.ProjectileType("tormentorShenaniganBall"), 10, 5, player.whoAmI);
+
+            }
+        }
+        private void hivemindCloneLmao()
+        {
+            player = Main.player[npc.target];
+
+            npc.ai[1] += 5f;
+            double degWaveyBoi = (double) npc.ai[1]; 
+            double radWaveyBoi = degWaveyBoi * (Math.PI / 180);
+
+            npc.position.X = player.Center.X + (int)(Math.Cos(radWaveyBoi * 0.8) * 500);
+
+            npc.position.Y = player.Center.Y - 250f;
+           
+
+           
+        }
+
+
 
 
         public override bool? DrawHealthBar(byte hbPosition, ref float scale, ref Vector2 position)
@@ -142,113 +276,37 @@ namespace CrimsonsMod.NPCs.tormentorBoss
             }
         }				
 
-		private void Attack()  //set of moves the boss will do
+		private void Attack()
         {
-
+            
 
 
         }
 
-
-
-
-
-        private void DiscountSlimeGod()
+        private float Magnitude(Vector2 mag)
         {
-            npc.aiStyle = 1;
-            aiType = 1;
-            npc.noTileCollide = false;
-            npc.noGravity = false;
-            
-                        
-            if(Main.rand.Next(200) == 0)
-            {
-                if(npc.position.X > player.position.X)
-                {
-                    npc.velocity.X += -5;
-                }
-                if(npc.position.X < player.position.X)
-                {
-                    npc.velocity.X += 5;
-                }
-            }
-            
-            
-            
-            
-            if(Main.rand.Next(20) == 0 && npc.npcSlots < 100)
-            {
-                NPC.NewNPC((int)(npc.position.X - 100), (int)(npc.position.Y - 100), mod.NPCType("aerossault_slime_minion"), 0, npc.whoAmI, 1f, 0f, 30f);
-            }
-            
-            Dust.NewDustDirect(npc.position, npc.width, npc.height, 91);       
+            return (float)Math.Sqrt(mag.X * mag.X + mag.Y * mag.Y);
         }
 
-        
-        
-        private void TorpedoReeeeeeeeee()
-        {
-            npc.aiStyle = -1;
-            npc.noTileCollide = true;
-            npc.noGravity = true;
 
-
-            if(npc.position.X + 00 > player.position.X)
-            {
-                npc.velocity.X += -2;
-            }
-
-            if(npc.position.X + 00  < player.position.X)
-            {
-                npc.velocity.X += 2;
-            }
-            
-            if(npc.position.Y + 500 > player.position.Y)
-            {
-                npc.velocity.Y += -0.04f;
-            }
-        
-            if(npc.position.Y + 500  < player.position.Y)
-            {
-                npc.velocity.Y += 0.04f;
-            }
-        
-                Dust.NewDustDirect(npc.position, npc.width, npc.height, 91);     
-            
-            double count = 0;
-            double shootProj = count % 100;
-            count += 1f;
-            
-            if(shootProj == 0)
-            {
-            Projectile.NewProjectile(npc.position.X, npc.position.Y, (int)(Main.rand.Next(-3, 3)), 5, mod.ProjectileType("aerossault_beam"), 20, 3f, Main.myPlayer, npc.whoAmI);        
-
-            }
-
-        }
 
         
         
         
-        private void CamperBulletHell()
-        {
-            npc.aiStyle = -1;
-            npc.noTileCollide = true;
-            npc.noGravity = true;
-
-
-            npc.velocity.X /= 2f;
-            npc.velocity.Y /= 2f;
         
-            for (int i = 0; i<5; i++)
-            {            
-                Dust.NewDustDirect(npc.position, npc.width, npc.height, 91);     
-            }
-
-
-            Projectile.NewProjectile(npc.position.X, npc.position.Y, (int)(Main.rand.Next(-10, 10)), (int)(Main.rand.Next(-10, 10)), mod.ProjectileType("aerossault_beam"), npc.damage, 3f, Main.myPlayer, npc.whoAmI);        
         
-        }
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
 	
 	
 	

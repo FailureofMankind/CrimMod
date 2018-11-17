@@ -11,11 +11,11 @@ namespace CrimsonsMod.Items.Weapons.shortswords
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Elemental Dagger");
-			Tooltip.SetDefault("'yo i heard yall like debuffs so....... -blushie'\nInflicts onfire, frostburn, poisoned, confused, cursed inferno, ichor\nHitting enemies with the blade causes an explosion of mushrooms"); //'rated -7.5/10; not enough water'\n
+			Tooltip.SetDefault("'yo i heard yall like debuffs so....... -blushie'\nInflicts onfire, frostburn, poisoned, confused, cursed inferno, ichor\nHitting enemies with the blade causes an explosion"); //'rated -7.5/10; not enough water'\n
 		}
 		public override void SetDefaults()
 		{
-			item.damage = 23;
+			item.damage = 67;
 			item.melee = true;
 			item.width = 40;
 			item.height = 40;
@@ -40,17 +40,9 @@ namespace CrimsonsMod.Items.Weapons.shortswords
 			target.AddBuff(31, 300); //buff id confused
 
 
-			for (int i = 0; i< 10 ; i++)
-            {
-            Projectile.NewProjectile(target.position.X, target.position.Y, 0, 0, 131, (int)(damage * 0.6), knockback, player.whoAmI, 0f, 0f);
-			}
-			for (int i = 0; i< 30 ; i++)
-            {
-            Dust dust = Dust.NewDustDirect(target.position, target.width, target.height, 156);
-            dust.noGravity = true;
-            dust.velocity *= 5f;
-            dust.scale = 2f;
-			}
+			
+            Projectile.NewProjectile(target.Center.X, target.Center.Y, 0, 0, mod.ProjectileType("dagger_explosion1"), damage, knockback, player.whoAmI, 0f, 0f);
+			
 		}
 
 		public override void AddRecipes()
