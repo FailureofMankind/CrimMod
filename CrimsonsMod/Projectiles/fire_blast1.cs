@@ -42,8 +42,8 @@ namespace CrimsonsMod.Projectiles
 		
 			for (int i = 0; i<15; i++)
             {            
-                int dust = Dust.NewDust(target.position, target.width, target.height, dustValue);   //this adds a vanilla terraria dust to the projectile
-				Main.dust[dust].velocity *= 10f;
+                int dust = Dust.NewDust(target.Center, 0, 0, dustValue);   //this adds a vanilla terraria dust to the projectile
+				Main.dust[dust].velocity *= (float)(Main.rand.Next(5, 12));
 				Main.dust[dust].scale = 2f;
 				Main.dust[dust].noGravity = true;
             }

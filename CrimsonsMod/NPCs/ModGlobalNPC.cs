@@ -192,13 +192,13 @@ namespace CrimsonsMod.NPCs
                 }
             }
 			
-			if (npc.type == NPCID.MartianSaucer)  
+			if (npc.type == 395)  
             {
-                if (Main.rand.Next(3) == 0) 
+                if (Main.rand.Next(5) == 0) 
                 {
                     Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("Phobos"), 1);
                 }
-                if (Main.rand.Next(4) == 0) 
+                if (Main.rand.Next(5) == 0) 
                 {
                     Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("Influx_Shortsword"), 1);
                 }

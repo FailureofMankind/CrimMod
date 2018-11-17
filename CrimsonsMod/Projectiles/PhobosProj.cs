@@ -51,12 +51,13 @@ namespace CrimsonsMod.Projectiles
 
 		public override void PostAI()
 		{
-			if (Main.rand.Next(2) == 0)
-			{
-				Dust dust = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, 20);
-				dust.noGravity = false;
-				dust.velocity *= 2f;
-	        }
+            for (int i = 0; i<10; i++)
+            {            
+			Dust dust = Dust.NewDustDirect(projectile.Center, 0, 0, 20);
+			dust.noGravity = false;
+			dust.velocity *= 0f;
+			}
+			
 	    }
     } 
 }

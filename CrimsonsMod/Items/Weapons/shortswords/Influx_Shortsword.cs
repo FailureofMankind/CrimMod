@@ -37,7 +37,8 @@ namespace CrimsonsMod.Items.Weapons.shortswords
             for (int i = 0; i < numberProjectiles; i++)
             {
                 Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(30));
-                Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, 451, damage, knockBack, player.whoAmI);
+                int a = Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, 451, damage, knockBack, player.whoAmI);
+				Main.projectile[a].timeLeft = 40;
             }
               
             return true;
