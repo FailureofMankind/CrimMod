@@ -53,16 +53,16 @@ public class crimson_trident_spear : ModProjectile
 			{
 				if (movementFactor == 0f) // When initially thrown out, the ai0 will be 0f
 				{
-					movementFactor = -4f; // Make sure the spear moves forward when initially thrown out
+					movementFactor = -13f; // Make sure the spear moves forward when initially thrown out
 					projectile.netUpdate = true; // Make sure to netUpdate this spear
 				}
 				if (projOwner.itemAnimation < projOwner.itemAnimationMax / 3) // Somewhere along the item animation, make sure the spear moves back
 				{
-					movementFactor -= .5f;
+					movementFactor -= .7f;
 				}
 				else // Otherwise, increase the movement factor
 				{
-					movementFactor += .5f;
+					movementFactor += .7f;
 				}
 			}
 			// Change the spear position based off of the velocity and the movementFactor
@@ -85,6 +85,10 @@ public class crimson_trident_spear : ModProjectile
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit) //When you hit an NPC
         {
             target.immune[projectile.owner] = 0;
+            int dust = Dust.NewDust(target.Center, 0, 0, 219);   //this adds a vanilla terraria dust to the projectile
+            Main.dust[dust].noGravity = true; 
+            Main.dust[dust].scale = 1.2f;
+            Main.dust[dust].velocity *= 8f;
         }
 		
 }
