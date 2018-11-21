@@ -17,7 +17,7 @@ namespace CrimsonsMod.Items.Weapons
 
 		public override void SetDefaults()
 		{
-			item.damage = 666;
+			item.damage = 59;
 			item.magic = true;
 			item.mana = 69;
 			item.width = 40;

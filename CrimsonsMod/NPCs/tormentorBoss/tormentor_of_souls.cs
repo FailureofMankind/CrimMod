@@ -118,18 +118,18 @@ namespace CrimsonsMod.NPCs.tormentorBoss
             if(attackMode == 1)
             {
                 timer2++;
-                if(timer2 >= 60 && npc.life > npc.lifeMax * 0.4)
+                if(timer2 >= 70 && npc.life > npc.lifeMax * 0.4)
                 {
                     dashyB0i();
                     timer2 = 0;
                 }
-                if(timer2 >= 40 && npc.life <= npc.lifeMax * 0.4)
+                if(timer2 >= 50 && npc.life <= npc.lifeMax * 0.4)
                 {
                     dashyB0i();
                     timer2 = 0;
                 }
 
-                npc.velocity.Y *= 0.9f;
+                npc.velocity.Y *= 0.95f;
             }
 
             //attack mode: swave yes

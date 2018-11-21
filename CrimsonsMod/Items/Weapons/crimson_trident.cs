@@ -16,7 +16,7 @@ namespace CrimsonsMod.Items.Weapons
 
         public override void SetDefaults()
         {
-            item.damage = 100;
+            item.damage = 290;
             item.melee = true;
             item.width = 40;
             item.height = 40;
@@ -34,15 +34,7 @@ namespace CrimsonsMod.Items.Weapons
             item.autoReuse = true;
             item.shoot = mod.ProjectileType("crimson_trident_spear");
             item.shootSpeed = 20f;            
-        }
-
-        public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
-        {
-            Projectile.NewProjectile(position.X, position.Y, speedX, speedY, mod.ProjectileType("crimson_proj"), damage, knockBack, player.whoAmI, 0f, 0f);
-            
-            return true;
-        }
-        
+        }        
         
         public override bool CanUseItem(Player player)
         {

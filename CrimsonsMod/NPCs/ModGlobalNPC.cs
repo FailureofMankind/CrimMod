@@ -225,18 +225,7 @@ namespace CrimsonsMod.NPCs
                 {
                     Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("parasitic_organ"), Main.rand.Next(5, 10));
                 }
-            }            
-            if (Main.player[Player.FindClosest(npc.position, npc.width, npc.height)].ZoneOverworldHeight && !Main.player[Player.FindClosest(npc.position, npc.width, npc.height)].ZoneCrimson && !Main.player[Player.FindClosest(npc.position, npc.width, npc.height)].ZoneCorrupt)  
-            {
-                if(!Main.hardMode && Main.rand.Next(10) == 0)
-                {
-                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("purity_shard"), Main.rand.Next(2, 5));
-                }
-                if(Main.hardMode && Main.rand.Next(75) == 0)
-                {
-                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("purity_shard"), Main.rand.Next(2, 5));
-                }
-            }            
+            }                       
             
             
             
