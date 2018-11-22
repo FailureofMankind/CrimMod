@@ -16,14 +16,14 @@ namespace CrimsonsMod.Items.Weapons
 
         public override void SetDefaults()
         {
-            item.damage = 290;
+            item.damage = 2000;
             item.melee = true;
             item.width = 40;
             item.height = 40;
-            item.useTime = 50;
-            item.useAnimation = 50;
+            item.useTime = 25;
+            item.useAnimation = 25;
             item.knockBack = 7;
-            item.UseSound = SoundID.Item1;
+            item.UseSound = SoundID.Item124;
             item.noMelee = true;
             item.noUseGraphic = true;
             item.useTurn = true;
