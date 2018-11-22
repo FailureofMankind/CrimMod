@@ -63,7 +63,7 @@ namespace CrimsonsMod.Projectiles
 			for (int i = 0; i<Main.rand.Next(10,30); i++)
             {
             
-				Dust dust = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, 12);
+				Dust dust = Dust.NewDustDirect(projectile.Center, projectile.width, projectile.height, 12);
 				dust.noGravity = true;
 				dust.scale = 2f;
                 dust.velocity *= 10f;

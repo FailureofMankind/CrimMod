@@ -17,8 +17,8 @@ namespace CrimsonsMod.Projectiles
 
 		public override void SetDefaults()
 		{
-            projectile.width = 26;
-            projectile.height = 26;
+            projectile.width = 128;
+            projectile.height = 128;
             projectile.aiStyle = 1;
             aiType = ProjectileID.Bullet;
             projectile.friendly = true;

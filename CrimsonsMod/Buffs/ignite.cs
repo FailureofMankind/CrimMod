@@ -10,7 +10,7 @@ namespace CrimsonsMod.Buffs
 		public override void SetDefaults()
 		{
 			DisplayName.SetDefault("Ignited");
-			Description.SetDefault("You're on fire, but you are not hurt.......");
+			Description.SetDefault("You're on fire, but somehow you are not hurt.......");
 			Main.buffNoSave[Type] = true;
             Main.debuff[Type] = false;
 		}

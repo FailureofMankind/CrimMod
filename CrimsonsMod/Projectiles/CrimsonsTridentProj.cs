@@ -252,7 +252,28 @@ namespace CrimsonsMod.Projectiles
 			int dust = Dust.NewDust(target.Center, 0, 0, 219);   //this adds a vanilla terraria dust to the projectile
             Main.dust[dust].noGravity = true; 
             Main.dust[dust].scale = 1.2f;
-            Main.dust[dust].velocity *= 3f;
+            Main.dust[dust].velocity.X *= 0f;
+            Main.dust[dust].velocity.Y *= 10f;
+
+			int dust1 = Dust.NewDust(target.Center, 0, 0, 219);   //this adds a vanilla terraria dust to the projectile
+            Main.dust[dust1].noGravity = true; 
+            Main.dust[dust1].scale = 1.2f;
+            Main.dust[dust1].velocity.X *= 0f;
+            Main.dust[dust1].velocity.Y *= -10f;
+			
+			int dust2 = Dust.NewDust(target.Center, 0, 0, 219);   //this adds a vanilla terraria dust to the projectile
+            Main.dust[dust2].noGravity = true; 
+            Main.dust[dust2].scale = 1.2f;
+            Main.dust[dust2].velocity.X *= -10f;
+            Main.dust[dust2].velocity.Y *= 0f;
+
+			int dust3 = Dust.NewDust(target.Center, 0, 0, 219);   //this adds a vanilla terraria dust to the projectile
+            Main.dust[dust3].noGravity = true; 
+            Main.dust[dust3].scale = 1.2f;
+            Main.dust[dust3].velocity.X *= -10f;
+            Main.dust[dust3].velocity.Y *= 0f;
+
+			//too lazy to create a loop lmao
 
         }
 		

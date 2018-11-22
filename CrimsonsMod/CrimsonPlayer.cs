@@ -15,6 +15,7 @@ using Terraria.Graphics.Capture;
 using Terraria.Graphics.Effects;
 using Terraria.Graphics.Shaders;
 using CrimsonsMod.Items;
+using CrimsonsMod.NPCs;
 
 
 namespace CrimsonsMod
@@ -24,20 +25,22 @@ namespace CrimsonsMod
 
     public class CrimsonPlayer : ModPlayer
     {
+        //armor set bonuses
         public bool ferrium = false;
-        
+
+        //accessories
+        public bool forestPendantEffect = false;
+
+        //buffs
+
+
         //debuffs
-        public bool septic_curse = false;
 
 
         public override void ResetEffects()
         {
             ferrium = false;
-            septic_curse = false;
-        }
-        public override void UpdateDead()
-        {
-            septic_curse = false;
+            forestPendantEffect = false;
         }
 
         public override void OnHitNPC(Item no, NPC target, int damage, float knockback, bool crit)
@@ -50,6 +53,14 @@ namespace CrimsonsMod
                 Main.projectile[a].scale = 2f;
             }
         
+        }
+
+        public override void OnHitNPCWithProj(Projectile projectile, NPC target, int damage, float knockback, bool crit)
+		{
+            if(forestPendantEffect && projectile.minion)
+            {
+                target.AddBuff(20, 120); //poisoned
+            }
         }
 
         /*public override void UpdateBadLifeRegen()
