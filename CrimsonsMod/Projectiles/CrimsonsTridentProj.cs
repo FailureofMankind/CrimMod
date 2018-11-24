@@ -20,7 +20,7 @@ namespace CrimsonsMod.Projectiles
 			projectile.height = 16;
 			projectile.aiStyle = -1;
 			projectile.friendly = true;
-			projectile.melee = true;
+			projectile.thrown = true;
 			projectile.penetrate = 50;
 			projectile.hide = true;
 		}
@@ -276,6 +276,27 @@ namespace CrimsonsMod.Projectiles
 			//too lazy to create a loop lmao
 
         }
+		int bounces = 10;
+        public override bool OnTileCollide(Vector2 oldVelocity)
+		{
+			if (projectile.velocity.X != oldVelocity.X)
+			{
+				projectile.velocity.X = -oldVelocity.X;
+			}
+			if (projectile.velocity.Y != oldVelocity.Y)
+			{
+				projectile.velocity.Y = -oldVelocity.Y;
+			}
+			
+			bounces--;
+			if(bounces <= 0)
+			{
+				projectile.penetrate = 0;
+			}
+			return false;
+		}        
+
+
 		
 	}
 }
