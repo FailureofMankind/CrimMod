@@ -27,12 +27,12 @@ namespace CrimsonsMod.Items.manganese
 
 		public override void UpdateEquip(Player player)
 		{
-			player.meleeDamage *= 1.05f;
-			player.rangedDamage *= 1.05f;
-			player.magicDamage *= 1.05f;
-			player.minionDamage *= 1.05f;
-            
-            player.AddBuff(109, 2);
+			player.meleeDamage += 0.05f;
+			player.rangedDamage += 0.05f;
+			player.magicDamage += 0.05f;
+			player.minionDamage += 0.05f;
+			
+            		player.AddBuff(109, 2);
 		}
 
 		public override void AddRecipes()
