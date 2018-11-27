@@ -45,7 +45,7 @@ namespace CrimsonsMod.Items.manganese
 			player.setBonus = "25% increased movement speed\nProvides immunity to poison\nAllows free movement in water";					
             player.buffImmune[20] = true;            
 			
-            player.moveSpeed *= 1.25f;
+            player.moveSpeed += 0.25f;
             
             player.ignoreWater = true;
         }
