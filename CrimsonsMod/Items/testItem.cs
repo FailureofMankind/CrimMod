@@ -18,8 +18,8 @@ namespace CrimsonsMod.Items
 			item.damage = 10;
 			item.width = 56;
 			item.height = 20;
-			item.useTime = 20;
-			item.useAnimation = 22;
+			item.useTime = 3;
+			item.useAnimation = 3;
 			item.useStyle = 5;
 			item.noMelee = true;
 			item.knockBack = 0;
@@ -27,7 +27,7 @@ namespace CrimsonsMod.Items
 			item.UseSound = SoundID.Item36;
 			item.autoReuse = true;
 			item.shootSpeed = 10f;
-            item.shoot = mod.ProjectileType("water_volt");
+            item.shoot = mod.ProjectileType("barkwoodProjShot");
 
 		}        
 

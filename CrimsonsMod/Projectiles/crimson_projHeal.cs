@@ -1,10 +1,20 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
+using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.ModLoader.IO;
+using Terraria.GameContent;
+using Terraria.GameContent.UI;
+using Terraria.GameInput;
+using Terraria.Graphics.Capture;
+using Terraria.Graphics.Effects;
+using Terraria.Localization;
+using Terraria.Graphics.Shaders;
 
 namespace CrimsonsMod.Projectiles
 {
@@ -41,8 +51,12 @@ namespace CrimsonsMod.Projectiles
 
 		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
 		{
+            Player player = Main.player[projectile.owner];
+
             target.immune[projectile.owner] = 0;
-			projectile.vampireHeal(damage, projectile.position);          		
+
+			player.statLife += 10;
+
         }
         
 	}

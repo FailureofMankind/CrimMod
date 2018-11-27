@@ -4,14 +4,14 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace CrimsonsMod.Items.Accessories
+namespace CrimsonsMod.Items.starter
 {
 	public class Soul_of_neutrality : ModItem
 	{
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Soul of Neutrality");
-			Tooltip.SetDefault("'state where the human no longer possesses concern over anything at all. Nothing matters'\nAre you sure you want to delete your soul?");
+			Tooltip.SetDefault("'the state where the human no longer possesses concern over anything at all. Nothing matters'\nAre you sure you want to delete your soul? There is more potential to your life than you know...");
 		}
         public override void SetDefaults()
         {

@@ -33,6 +33,7 @@ namespace CrimsonsMod.Projectiles
 
         public override void AI()
         {
+            
             int dust = Dust.NewDust(projectile.Center, 0, 0, 219);   //this adds a vanilla terraria dust to the projectile
             Main.dust[dust].noGravity = true; 
             Main.dust[dust].scale = 1.2f;

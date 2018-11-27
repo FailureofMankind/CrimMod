@@ -13,9 +13,11 @@ using Terraria.GameContent.UI;
 using Terraria.GameInput;
 using Terraria.Graphics.Capture;
 using Terraria.Graphics.Effects;
+using Terraria.Localization;
 using Terraria.Graphics.Shaders;
 using CrimsonsMod.Items;
 using CrimsonsMod.NPCs;
+
 
 
 namespace CrimsonsMod
@@ -27,6 +29,7 @@ namespace CrimsonsMod
     {
         //armor set bonuses
         public bool ferrium = false;
+        public bool barkwoodSet = false;
 
         //accessories
         public bool forestPendantEffect = false;
@@ -44,6 +47,8 @@ namespace CrimsonsMod
         public override void ResetEffects()
         {
             ferrium = false;
+            barkwoodSet = false;
+
             forestPendantEffect = false;
             soulOfJusticeQuirk = false;
             soulOfIntegrityQuirk = false;
@@ -73,6 +78,7 @@ namespace CrimsonsMod
             {
                 target.AddBuff(20, 120); //poisoned
             }
+
             if(soulOfIntegrityQuirk)
             {
                 if(projectile.melee == true)
@@ -104,6 +110,36 @@ namespace CrimsonsMod
             }
         }
 
+
+        public override void SetupStartInventory(IList<Item> startItem)
+        {
+            startItem.Clear();
+
+            Item item = new Item();
+            item.SetDefaults(mod.ItemType("starterWeapon"));
+            item.stack = 1;
+            startItem.Add(item);
+
+            Item item2 = new Item();
+            item2.SetDefaults(mod.ItemType("starterPick"));
+            item2.stack = 1;
+            startItem.Add(item2);
+
+            Item item3 = new Item();
+            item3.SetDefaults(mod.ItemType("starterAxe"));
+            item3.stack = 1;
+            startItem.Add(item3);
+
+            Item item4 = new Item();
+            item4.SetDefaults(mod.ItemType("starterHam"));
+            item4.stack = 1;
+            startItem.Add(item4);
+            
+            Item item5 = new Item();
+            item5.SetDefaults(mod.ItemType("Soul_of_neutrality"));
+            item5.stack = 1;
+            startItem.Add(item5);
+        }
         /*public override void UpdateBadLifeRegen()
         {
             if(septic_curse == true)
