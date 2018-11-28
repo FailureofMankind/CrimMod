@@ -42,7 +42,7 @@ namespace CrimsonsMod.Items.ArmorExtension
 		{
 			player.setBonus = "10% increased magic damage and critical strike chance\nMana flower effect\n'How does one see through this?'";
 			player.magicCrit += 10;
-			player.magicDamage *= 1.10f;
+			player.magicDamage += +.10f;
             
             player.manaFlower = true;
 

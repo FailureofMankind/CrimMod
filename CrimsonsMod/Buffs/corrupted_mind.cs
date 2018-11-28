@@ -17,14 +17,14 @@ namespace CrimsonsMod.Buffs
 
 		public override void Update(Player player, ref int buffIndex)
 		{
-            player.moveSpeed *= 0.5f;
-            player.maxRunSpeed *= 0.5f;
+            player.moveSpeed -= 0.5f;
+            player.maxRunSpeed -= 0.5f;
 
-			player.thrownDamage *= 1.15f;
-			player.meleeDamage *= 1.15f;
-			player.magicDamage *= 1.15f;
-			player.rangedDamage *= 1.15f;
-			player.minionDamage *= 1.15f;
+			player.thrownDamage -= 0.15f;
+			player.meleeDamage -= 0.15f;
+			player.magicDamage -= 0.15f;
+			player.rangedDamage -= 0.15f;
+			player.minionDamage -= 0.15f;
 		
 		
 		}

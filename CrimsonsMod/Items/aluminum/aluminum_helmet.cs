@@ -73,14 +73,15 @@ namespace CrimsonsMod.Items.aluminum
 			}
 
 
-            player.thrownDamage -= damageMultiplier;
+      player.thrownDamage -= damageMultiplier;
 			player.meleeDamage -= damageMultiplier;
 			player.magicDamage -= damageMultiplier;
 			player.rangedDamage -= damageMultiplier;
 			player.minionDamage -= damageMultiplier;
 			
 
-            player.maxFallSpeed += 0.30f;
+      player.maxFallSpeed += 0.15f;
+
         }
 		
         public override void ArmorSetShadows(Player player)

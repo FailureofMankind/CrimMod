@@ -10,7 +10,7 @@ namespace CrimsonsMod.Buffs
 		public override void SetDefaults()
 		{
 			DisplayName.SetDefault("Blood Rush");
-			Description.SetDefault("Increased critcal strike chance by 20% and run acceleration");
+			Description.SetDefault("You just want to fly off up the sky without wings!");
 			Main.buffNoSave[Type] = true;
             Main.debuff[Type] = false;
 		}
@@ -22,7 +22,7 @@ namespace CrimsonsMod.Buffs
 			player.rangedCrit += 20;
 			player.magicCrit += 20;
             
-            player.runAcceleration *= 7f; 
+            player.runAcceleration *= 4f; 
         }
 	}
 }

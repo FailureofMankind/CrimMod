@@ -29,7 +29,7 @@ namespace CrimsonsMod.Buffs
 			
 			}
             
-		player.moveSpeed *= 1.5f;
+		player.moveSpeed += 0.1f;
 		player.jumpBoost = true;
 		
 		}
