@@ -35,7 +35,7 @@ namespace CrimsonsMod.Projectiles
 		
 		public override void OnHitNPC(NPC target, int damage, float knockBack, bool crit)
 		{
-            target.immune[projectile.owner] = 4;	
+            target.immune[projectile.owner] = 6;	
 			target.AddBuff(144, 720);
             for (int i = 0; i<20; i++)
             {            

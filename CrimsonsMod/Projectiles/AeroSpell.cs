@@ -23,7 +23,6 @@ namespace CrimsonsMod.Projectiles
 			projectile.penetrate = -1;
 			projectile.timeLeft = 400;
             projectile.alpha = 128;		
-            projectile.extraUpdates = 1;
             projectile.tileCollide = true;
             
         }

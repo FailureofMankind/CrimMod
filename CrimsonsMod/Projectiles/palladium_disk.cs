@@ -26,8 +26,8 @@ namespace CrimsonsMod.Projectiles
 			projectile.thrown = true;
 			projectile.penetrate = -1;
 			projectile.timeLeft = 600;
+            projectile.extraUpdates = 1;
             projectile.alpha = 0;			
-			projectile.extraUpdates = 1;
             aiType = ProjectileID.Bullet; 			
 
 

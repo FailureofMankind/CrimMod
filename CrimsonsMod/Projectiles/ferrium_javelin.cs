@@ -29,7 +29,6 @@ namespace CrimsonsMod.Projectiles
 			projectile.timeLeft = 400;
             projectile.alpha = 0;		
 			projectile.light = 0.7f;	
-			projectile.extraUpdates = 1;
 
 
         }
