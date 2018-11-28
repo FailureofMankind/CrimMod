@@ -31,8 +31,9 @@ namespace CrimsonsMod.Items.manganese
 			player.rangedDamage += 0.05f;
 			player.magicDamage += 0.05f;
 			player.minionDamage += 0.05f;
-            
-            player.AddBuff(109, 2);
+
+      player.AddBuff(109, 2);
+
 		}
 
 		public override void AddRecipes()
