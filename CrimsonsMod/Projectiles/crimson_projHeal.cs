@@ -1,14 +1,24 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
+using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.ModLoader.IO;
+using Terraria.GameContent;
+using Terraria.GameContent.UI;
+using Terraria.GameInput;
+using Terraria.Graphics.Capture;
+using Terraria.Graphics.Effects;
+using Terraria.Localization;
+using Terraria.Graphics.Shaders;
 
 namespace CrimsonsMod.Projectiles
 {
-	public class crimson_proj : ModProjectile
+	public class crimson_projHeal : ModProjectile
 	{
 		public override void SetStaticDefaults()
 		{
@@ -33,7 +43,6 @@ namespace CrimsonsMod.Projectiles
 
         public override void AI()
         {
-            
             int dust = Dust.NewDust(projectile.Center, 0, 0, 219);   //this adds a vanilla terraria dust to the projectile
             Main.dust[dust].noGravity = true; 
             Main.dust[dust].scale = 1.2f;
@@ -42,8 +51,13 @@ namespace CrimsonsMod.Projectiles
 
 		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
 		{
+            Player player = Main.player[projectile.owner];
+
             target.immune[projectile.owner] = 0;
-		}
+
+			player.statLife += 10;
+
+        }
         
 	}
 }

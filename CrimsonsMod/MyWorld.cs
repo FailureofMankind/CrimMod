@@ -17,6 +17,7 @@ namespace CrimsonsMod
 {
 	public class MyWorld : ModWorld
 	{
+		public static bool firstBoss = false;
 		public static bool spawn_ferrium_ore = false;
 		public static bool aero_aggression = false;
 

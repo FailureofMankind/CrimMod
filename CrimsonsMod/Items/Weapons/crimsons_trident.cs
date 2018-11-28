@@ -19,21 +19,21 @@ namespace CrimsonsMod.Items.Weapons
 		{
 			item.damage = 2400;
 			item.magic = true;
-			item.mana = 69;
+			item.mana = 50;
 			item.width = 40;
 			item.height = 40;
-			item.useTime = 25;
-			item.useAnimation = 25;
+			item.useTime = 20;
+			item.useAnimation = 20;
 			item.useStyle = 5;
 			item.noMelee = true; //so the item's animation doesn't do damage
 			item.knockBack = 5;
 			item.value = 10000;
 			item.rare = 11;
 			item.expert = true;
-			item.UseSound = SoundID.Item20;
+			item.UseSound = SoundID.Item124;
 			item.autoReuse = true;
 			item.shoot = mod.ProjectileType("crimsons_trident");
-			item.shootSpeed = 18f;
+			item.shootSpeed = 30f;
 		}
 		
 		public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
@@ -41,7 +41,7 @@ namespace CrimsonsMod.Items.Weapons
               int numberProjectiles = 10; //This defines how many projectiles to shot. 4 + Main.rand.Next(2)= 4 or 5 shots
               for (int i = 0; i < numberProjectiles; i++)
               {
-                  Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(60)); // This defines the projectiles random spread . 30 degree spread.
+                  Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(40)); // This defines the projectiles random spread . 30 degree spread.
                   Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, type, damage, knockBack, player.whoAmI);
               }
               return false;

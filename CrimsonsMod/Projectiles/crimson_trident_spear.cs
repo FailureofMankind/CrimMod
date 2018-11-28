@@ -97,7 +97,8 @@ public class crimson_trident_spear : ModProjectile
             Main.dust[dust].noGravity = true; 
             Main.dust[dust].scale = 1.2f;
             Main.dust[dust].velocity *= 8f;
-            Projectile.NewProjectile(target.Center.X, target.Center.Y, 0, 0, mod.ProjectileType("crimson_proj"), projectile.damage, 0, Main.myPlayer); //Spawning a projectile        
+            Projectile.NewProjectile(target.Center.X, target.Center.Y, 0, 0, mod.ProjectileType("crimson_projHeal"), projectile.damage, 0, Main.myPlayer); //Spawning a projectile        
+
 		}
 		
 }

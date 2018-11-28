@@ -241,7 +241,13 @@ namespace CrimsonsMod.NPCs
             
             
             //progression 
+            if (npc.boss == true)  
+            {
+                MyWorld.firstBoss = true;                 
+            }
             
+
+
             if (npc.type == NPCID.QueenBee)  
             {
                 if (!MyWorld.aero_aggression)
