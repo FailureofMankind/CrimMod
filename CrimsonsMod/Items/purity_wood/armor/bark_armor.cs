@@ -13,7 +13,7 @@ namespace CrimsonsMod.Items.purity_wood.armor
 		{
 			base.SetStaticDefaults();
 			DisplayName.SetDefault("Barkwood Chestplate");
-			Tooltip.SetDefault("5% increased minion damage");
+			Tooltip.SetDefault("7% increased minion damage");
 		}
 
 		public override void SetDefaults()
@@ -27,7 +27,7 @@ namespace CrimsonsMod.Items.purity_wood.armor
 
 		public override void UpdateEquip(Player player)
 		{
-		   player.minionDamage *= 1.05f;
+		   player.minionDamage += 0.07f;
 		}
 
 		public override void AddRecipes()

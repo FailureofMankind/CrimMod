@@ -28,11 +28,11 @@ namespace CrimsonsMod.Items.aluminum
 
 		public override void UpdateEquip(Player player)
 		{
-			player.meleeDamage *= 1.02f;
-			player.magicDamage *= 1.02f;
-			player.rangedDamage *= 1.02f;
-			player.thrownDamage *= 1.02f;
-			player.minionDamage *= 1.02f;
+			player.meleeDamage += 0.02f;
+			player.magicDamage += 0.02f;
+			player.rangedDamage += 0.02f;
+			player.thrownDamage += 0.02f;
+			player.minionDamage += 0.02f;
 		}
 		
         
@@ -80,7 +80,7 @@ namespace CrimsonsMod.Items.aluminum
 			player.minionDamage *= damageMultiplier;
 			
 
-            player.maxFallSpeed *= 1.30f;
+            player.maxFallSpeed += 0.15f;
         }
 		
         public override void ArmorSetShadows(Player player)

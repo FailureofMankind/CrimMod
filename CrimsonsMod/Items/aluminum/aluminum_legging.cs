@@ -27,7 +27,7 @@ namespace CrimsonsMod.Items.aluminum
 
 		public override void UpdateEquip(Player player)
 		{
-            player.moveSpeed *= 1.05f;
+            player.moveSpeed += 0.05f;
             
 		}
 
