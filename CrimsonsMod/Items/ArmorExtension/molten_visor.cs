@@ -45,7 +45,8 @@ namespace CrimsonsMod.Items.ArmorExtension
 			player.thrownCrit += 13;
             player.thrownCost50 = true; //50% chance not to consume thrown item
 
-            CrimsonPlayer.moltenVisor = true;
+			CrimsonPlayer modplayer = player.GetModPlayer<CrimsonPlayer>(mod);
+            modplayer.moltenVisor = true;
  		}
 
 		public override void ArmorSetShadows(Player player)

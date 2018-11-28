@@ -81,7 +81,7 @@ namespace CrimsonsMod
             {
                 target.AddBuff(20, 120); //poisoned
             }
-            if(moltenVisor && projectile.thrown = true)
+            if(moltenVisor && projectile.thrown == true)
             {
                 target.AddBuff(24, 180); //onfire
             }
