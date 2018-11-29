@@ -1,2 +1,2 @@
 # CrimMod
-Crim mod - Authors: Crimson, FailureofMankind and Tboy
+Crim mod - Authors: Crimson and FailureofMankind
