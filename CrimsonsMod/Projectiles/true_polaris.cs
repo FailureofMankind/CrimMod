@@ -29,7 +29,7 @@ namespace CrimsonsMod.Projectiles
 			projectile.timeLeft = 260;
 			projectile.light = 0.5f;
             projectile.alpha = 64;
-			projectile.extraUpdates = 3;   
+			projectile.extraUpdates = 0;   
         }
 
         int count = 0;
@@ -39,14 +39,14 @@ namespace CrimsonsMod.Projectiles
 
             projectile.rotation += 3;
             count++;
-            if(count > (projectile.timeLeft / 4)) 
+            if(count > (projectile.timeLeft / 5)) 
             {
                 Vector2 velocityShoot = player.Center - projectile.Center;
                 float magnitude = Magnitude(velocityShoot);
 
-                if(magnitude > 20)
+                if(magnitude > 60)
                 {
-                    velocityShoot *= 30f / magnitude;
+                    velocityShoot *= 50f / magnitude;
                     projectile.velocity = velocityShoot;
                 }
                 else
@@ -68,12 +68,8 @@ namespace CrimsonsMod.Projectiles
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit) //When you hit an NPC
         {
             target.immune[projectile.owner] = 0;
-            countProj++;            
-            if(countProj > 3)
-            {
-                Projectile.NewProjectile(target.Center.X, target.Center.Y, Main.rand.Next(-3, 3), Main.rand.Next(-3, 3), mod.ProjectileType("polarisBolt"), projectile.damage, projectile.knockBack, Main.myPlayer, 0f, 0f);
-                countProj = 0;
-            }
+
+            Projectile.NewProjectile(target.Center.X, target.Center.Y, Main.rand.Next(-5, 5), Main.rand.Next(-5, 5), mod.ProjectileType("polarisBolt"), projectile.damage, projectile.knockBack, Main.myPlayer, 0f, 0f);
 
             Dust dust1 = Dust.NewDustDirect(target.Center, 0, 0, 229);
             dust1.noGravity = true;

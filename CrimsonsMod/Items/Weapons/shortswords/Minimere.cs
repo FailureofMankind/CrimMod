@@ -32,13 +32,13 @@ namespace CrimsonsMod.Items.Weapons.shortswords
         
 		public override void OnHitNPC(Player player, NPC target, int damage, float knockback, bool crit)
         {
-            Projectile.NewProjectile(player.position.X, (int)(player.position.Y + 40), 8, 0, 502, damage, knockback, player.whoAmI, 0f, 0f);
-            Projectile.NewProjectile(player.position.X, (int)(player.position.Y + 40), -8, 0, 502, damage, knockback, player.whoAmI, 0f, 0f);
+            Projectile.NewProjectile(target.Center.X, target.Center.Y, 8, 0, 502, damage, knockback, player.whoAmI, 0f, 0f);
+            Projectile.NewProjectile(target.Center.X, target.Center.Y, -8, 0, 502, damage, knockback, player.whoAmI, 0f, 0f);
             
-			Projectile.NewProjectile(player.position.X, (int)(player.position.Y + 40), 6, 6, 502, damage, knockback, player.whoAmI, 0f, 0f);
-            Projectile.NewProjectile(player.position.X, (int)(player.position.Y + 40), 6, -6, 502, damage, knockback, player.whoAmI, 0f, 0f);
-            Projectile.NewProjectile(player.position.X, (int)(player.position.Y + 40), -6, 6, 502, damage, knockback, player.whoAmI, 0f, 0f);
-            Projectile.NewProjectile(player.position.X, (int)(player.position.Y + 40), -6, -6, 502, damage, knockback, player.whoAmI, 0f, 0f);
+			Projectile.NewProjectile(target.Center.X, target.Center.Y, 6, 6, 502, damage, knockback, player.whoAmI, 0f, 0f);
+            Projectile.NewProjectile(target.Center.X, target.Center.Y, 6, -6, 502, damage, knockback, player.whoAmI, 0f, 0f);
+            Projectile.NewProjectile(target.Center.X, target.Center.Y, -6, 6, 502, damage, knockback, player.whoAmI, 0f, 0f);
+            Projectile.NewProjectile(target.Center.X, target.Center.Y, -6, -6, 502, damage, knockback, player.whoAmI, 0f, 0f);
         
 		}
         

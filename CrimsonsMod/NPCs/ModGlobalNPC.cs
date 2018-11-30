@@ -37,27 +37,6 @@ namespace CrimsonsMod.NPCs
 		{
         }
         
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
         public override void NPCLoot(NPC npc)
         {   
 			if (npc.type == mod.NPCType("sea_turtle") && Main.hardMode && Main.rand.Next(9) == 1)
@@ -258,7 +237,16 @@ namespace CrimsonsMod.NPCs
                 MyWorld.aero_aggression = true; 
             }
         
-        
+            if (npc.type == 398) //moonlord
+            {
+                if (!MyWorld.ultraHardmode)
+                {                                                               
+                    Main.NewText("The Dark Forces have been angered!", 155, 102, 142); 
+                    Main.NewText("The Light Forces will unleash their true chaos", 155, 193, 255); 
+                }
+                
+                MyWorld.ultraHardmode = true; 
+            }
 
 
 

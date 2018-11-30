@@ -31,7 +31,7 @@ namespace CrimsonsMod.Items.Weapons
 			item.rare = 10;
 			item.UseSound = SoundID.Item116;
 			item.autoReuse = true;
-			item.shootSpeed = 20f;
+			item.shootSpeed = 40f;
 			item.shoot = mod.ProjectileType ("true_polaris");
 		}
 		

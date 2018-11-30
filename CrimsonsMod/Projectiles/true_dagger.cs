@@ -29,7 +29,6 @@ namespace CrimsonsMod.Projectiles
 			projectile.timeLeft = 200;
             projectile.alpha = 0;		
             projectile.tileCollide = false;	
-			projectile.extraUpdates = 1;
             aiType = ProjectileID.Bullet; 			
 
         }

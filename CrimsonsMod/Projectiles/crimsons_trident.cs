@@ -17,6 +17,7 @@ namespace CrimsonsMod.Projectiles
 			projectile.magic = true;
 			projectile.penetrate = 1;
 			projectile.timeLeft = 600;
+			projectile.extraUpdates = 5;
 		}
 
 		public override bool PreKill(int timeLeft)

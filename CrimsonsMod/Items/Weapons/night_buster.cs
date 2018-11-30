@@ -42,7 +42,7 @@ namespace CrimsonsMod.Items.Weapons
                 item.useTime = 15;
                 item.useAnimation = 15;
                 item.mana = 2;
-                item.shoot = 260;
+                item.shoot = mod.ProjectileType("ray_day");
             }
             if(!Main.dayTime)
             {
@@ -50,7 +50,7 @@ namespace CrimsonsMod.Items.Weapons
                 item.useTime = 30;
                 item.useAnimation = 30;
                 item.mana = 10;
-                item.shoot = 294;
+                item.shoot = mod.ProjectileType("ray_night");
             }
         }
 		public override Vector2? HoldoutOffset()

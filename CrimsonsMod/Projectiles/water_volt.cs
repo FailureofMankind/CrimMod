@@ -23,7 +23,6 @@ namespace CrimsonsMod.Projectiles
 			projectile.friendly = true;
 			projectile.magic = true;
 			projectile.penetrate = 5;		
-			projectile.extraUpdates = 1;
             projectile.light = 1f;
 			projectile.tileCollide = true;
         }    
