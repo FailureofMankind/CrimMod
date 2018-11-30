@@ -23,7 +23,6 @@ namespace CrimsonsMod.Projectiles
 			projectile.thrown = true;
             projectile.scale = 0.8f;
 			projectile.penetrate = 5;
-			projectile.hide = true;
 		}
 
 		// See ExampleBehindTilesProjectile. 

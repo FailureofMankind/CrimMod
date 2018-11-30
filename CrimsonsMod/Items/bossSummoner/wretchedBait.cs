@@ -2,7 +2,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace CrimsonsMod.Items
+namespace CrimsonsMod.Items.bossSummoner
 {
 	public class wretchedBait : ModItem
 	{

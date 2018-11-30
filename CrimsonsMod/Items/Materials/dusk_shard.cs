@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace CrimsonsMod.Items.Materials
 {
-	public class night_shade : ModItem
+	public class dusk_shard : ModItem
 	{
 
 		public override void SetStaticDefaults()

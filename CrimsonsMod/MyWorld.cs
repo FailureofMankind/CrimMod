@@ -20,6 +20,7 @@ namespace CrimsonsMod
 		public static bool firstBoss = false;
 		public static bool spawn_ferrium_ore = false;
 		public static bool aero_aggression = false;
+		public static bool ultraHardmode = false;
 
 		public override void ModifyWorldGenTasks(List<GenPass> tasks, ref float totalWeight)
 		{
