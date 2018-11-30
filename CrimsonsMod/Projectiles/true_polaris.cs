@@ -19,61 +19,67 @@ namespace CrimsonsMod.Projectiles
 
         public override void SetDefaults()
         {
-			projectile.width = 138;
-			projectile.height = 138;
+			projectile.width = 64;
+			projectile.height = 64;
 			projectile.friendly = true;
-            projectile.aiStyle = 3;
+            projectile.aiStyle = 0;
 			projectile.tileCollide = false;
 			projectile.thrown = true;
 			projectile.penetrate = -1;
-			projectile.timeLeft = 800;
+			projectile.timeLeft = 260;
 			projectile.light = 0.5f;
             projectile.alpha = 64;
-			projectile.extraUpdates = 1;   
-    
-
+			projectile.extraUpdates = 3;   
         }
 
-
+        int count = 0;
         public override void AI()
         {
-            if(Main.rand.Next(10) == 0)
-            {
-            int a = Dust.NewDust(projectile.position, projectile.width, projectile.height, 20);   //this adds a vanilla terraria dust to the projectile
-            Main.dust[a].noGravity = true;  //this modify the scale of the first dust
-            Main.dust[a].velocity *= 0f; 
-            }
-            double count = projectile.ai[1];    //i think projectile.ai[1] is another type of tick count passed by the projectile.....?
-            double spawn = count % 20;
-            
-            if(spawn==0)
-            {
-                int a = Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, Main.rand.Next(-5, 5), Main.rand.Next(-5, 5), 635, (int)(projectile.damage / 3), 0, Main.myPlayer); //Spawning a projectile
-                Main.projectile[a].magic = false;
-                Main.projectile[a].thrown = true;
-                Main.projectile[a].scale = 0.2f;
-                Main.projectile[a].tileCollide = false;
-            }
+            Player player = Main.player[projectile.owner];
 
-            projectile.ai[1] += 1f;
-        
-        
+            projectile.rotation += 3;
+            count++;
+            if(count > (projectile.timeLeft / 4)) 
+            {
+                Vector2 velocityShoot = player.Center - projectile.Center;
+                float magnitude = Magnitude(velocityShoot);
+
+                if(magnitude > 20)
+                {
+                    velocityShoot *= 30f / magnitude;
+                    projectile.velocity = velocityShoot;
+                }
+                else
+                {
+                    projectile.penetrate = 0;
+                }
+                        
+				Dust dust = Dust.NewDustDirect(projectile.Center, projectile.width, projectile.height, 56);
+				dust.noGravity = true;
+                dust.velocity *= 3f;                
+            }
+        }
+        private float Magnitude(Vector2 m)
+        {
+            return (float)Math.Sqrt(m.X * m.X + m.Y * m.Y);
         }
 
+        int countProj = 0;
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit) //When you hit an NPC
         {
-            int a = Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, Main.rand.Next(-10, 10), Main.rand.Next(-10, 10), 464, projectile.damage, projectile.knockBack, Main.myPlayer, 0f, 0f); //Spawning a projectile
-            Main.projectile[a].friendly = true;
-            Main.projectile[a].hostile = false;
-            Main.projectile[a].thrown = true;
-
-
-            Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, 0, 0, 612, projectile.damage, projectile.knockBack, Main.myPlayer, 0f, 0f); //Spawning a projectile
-            if(Main.rand.Next(9) == 0)
+            target.immune[projectile.owner] = 0;
+            countProj++;            
+            if(countProj > 3)
             {
-            Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, 0, 0, mod.ProjectileType("vortexStart"), projectile.damage, projectile.knockBack, Main.myPlayer, 0f, 0f); //Spawning a projectile                
+                Projectile.NewProjectile(target.Center.X, target.Center.Y, Main.rand.Next(-3, 3), Main.rand.Next(-3, 3), mod.ProjectileType("polarisBolt"), projectile.damage, projectile.knockBack, Main.myPlayer, 0f, 0f);
+                countProj = 0;
             }
+
+            Dust dust1 = Dust.NewDustDirect(target.Center, 0, 0, 229);
+            dust1.noGravity = true;
+            dust1.scale = 3f;
+            dust1.velocity *= 10f;
+			Main.PlaySound(SoundID.Item117, projectile.position);
         }
-        
     }
 }

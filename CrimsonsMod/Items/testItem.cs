@@ -24,7 +24,7 @@ namespace CrimsonsMod.Items
 			item.noMelee = true;
 			item.knockBack = 0;
 			item.rare = -2;
-			item.UseSound = SoundID.Item36;
+			item.UseSound = SoundID.Item1;
 			item.autoReuse = true;
 			item.shootSpeed = 10f;
             item.shoot = mod.ProjectileType("barkwoodProjShot");

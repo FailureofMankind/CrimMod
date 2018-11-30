@@ -22,7 +22,6 @@ namespace CrimsonsMod.Projectiles
 			projectile.width = 128;
 			projectile.height = 128;
 			projectile.friendly = true;
-			projectile.magic = true;
 			projectile.aiStyle = 34;
 			projectile.penetrate = -1;
 			projectile.timeLeft = 30;
