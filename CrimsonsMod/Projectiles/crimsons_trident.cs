@@ -9,20 +9,29 @@ namespace CrimsonsMod.Projectiles
 	{
 		public override void SetDefaults()
 		{
+			projectile.CloneDefaults(338);
+			aiType = 338;
 			projectile.width = 16;
 			projectile.height = 16;
 			projectile.friendly = true;
 			projectile.magic = true;
-			projectile.penetrate = 3;
+			projectile.penetrate = 1;
 			projectile.timeLeft = 600;
+			projectile.extraUpdates = 5;
 		}
+
+		public override bool PreKill(int timeLeft)
+		{
+			projectile.type = 338;
+			return false;
+		}
+
 
 		public override void AI()
 		{
-			projectile.velocity.Y += projectile.ai[0];
 			if (Main.rand.Next(3) == 0)
 			{
-				Dust.NewDust(projectile.position + projectile.velocity, projectile.width, projectile.height, mod.DustType("Magic"), projectile.velocity.X * 0.5f, projectile.velocity.Y * 0.5f);
+				Dust.NewDust(projectile.position + projectile.velocity, projectile.width, projectile.height, 219, projectile.velocity.X * 0.5f, projectile.velocity.Y * 0.5f);
 			}
 		}
 
@@ -61,9 +70,7 @@ namespace CrimsonsMod.Projectiles
 
 		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
 		{
-			projectile.ai[0] += 0.1f;
-			projectile.velocity *= 0.75f;
-            Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, 0, 0, mod.ProjectileType("crimson_proj"), projectile.damage, projectile.knockBack, Main.myPlayer, 0f, 0f); //Spawning a projectile			
+            Projectile.NewProjectile(target.Center.X, target.Center.Y, 0, 0, mod.ProjectileType("crimson_proj"), projectile.damage, 0, Main.myPlayer); //Spawning a projectile
 		}
 	}
 }

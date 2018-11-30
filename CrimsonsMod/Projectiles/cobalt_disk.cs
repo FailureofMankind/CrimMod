@@ -28,10 +28,10 @@ namespace CrimsonsMod.Projectiles
 			projectile.friendly = true;
 			projectile.tileCollide = true;
 			projectile.thrown = true;
+            projectile.extraUpdates = 1;
 			projectile.penetrate = -1;
 			projectile.timeLeft = 800;
 			projectile.light = 0.2f;
-			projectile.extraUpdates = 1;   
         }
 
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit) //When you hit an NPC

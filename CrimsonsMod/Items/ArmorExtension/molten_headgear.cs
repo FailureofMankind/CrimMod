@@ -29,7 +29,7 @@ namespace CrimsonsMod.Items.ArmorExtension
 
 		public override void UpdateEquip(Player player)
 		{
-			player.rangedDamage *= 1.05f;
+			player.rangedDamage += +.05f;
 		}
 		
         

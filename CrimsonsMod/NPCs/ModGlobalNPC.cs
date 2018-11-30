@@ -37,27 +37,6 @@ namespace CrimsonsMod.NPCs
 		{
         }
         
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
         public override void NPCLoot(NPC npc)
         {   
 			if (npc.type == mod.NPCType("sea_turtle") && Main.hardMode && Main.rand.Next(9) == 1)
@@ -225,18 +204,7 @@ namespace CrimsonsMod.NPCs
                 {
                     Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("parasitic_organ"), Main.rand.Next(5, 10));
                 }
-            }            
-            if (Main.player[Player.FindClosest(npc.position, npc.width, npc.height)].ZoneOverworldHeight && !Main.player[Player.FindClosest(npc.position, npc.width, npc.height)].ZoneCrimson && !Main.player[Player.FindClosest(npc.position, npc.width, npc.height)].ZoneCorrupt)  
-            {
-                if(!Main.hardMode && Main.rand.Next(10) == 0)
-                {
-                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("purity_shard"), Main.rand.Next(2, 5));
-                }
-                if(Main.hardMode && Main.rand.Next(75) == 0)
-                {
-                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("purity_shard"), Main.rand.Next(2, 5));
-                }
-            }            
+            }                       
             
             
             
@@ -252,7 +220,13 @@ namespace CrimsonsMod.NPCs
             
             
             //progression 
+            if (npc.boss == true)  
+            {
+                MyWorld.firstBoss = true;                 
+            }
             
+
+
             if (npc.type == NPCID.QueenBee)  
             {
                 if (!MyWorld.aero_aggression)
@@ -263,7 +237,16 @@ namespace CrimsonsMod.NPCs
                 MyWorld.aero_aggression = true; 
             }
         
-        
+            if (npc.type == 398) //moonlord
+            {
+                if (!MyWorld.ultraHardmode)
+                {                                                               
+                    Main.NewText("The Dark Forces have been angered!", 155, 102, 142); 
+                    Main.NewText("The Light Forces will unleash their true chaos", 155, 193, 255); 
+                }
+                
+                MyWorld.ultraHardmode = true; 
+            }
 
 
 

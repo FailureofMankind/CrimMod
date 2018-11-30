@@ -15,7 +15,7 @@ namespace CrimsonsMod.Items.Weapons.shortswords
 		}
 		public override void SetDefaults()
 		{
-			item.damage = 9;
+			item.damage = 4;
 			item.melee = true;
 			item.width = 32;
 			item.height = 32;
@@ -23,7 +23,7 @@ namespace CrimsonsMod.Items.Weapons.shortswords
             item.useTurn = true;
 			item.useAnimation = 15;
 			item.useStyle = 3;
-			item.knockBack = 8;
+			item.knockBack = 0;
             item.value = Item.sellPrice(0, 1, 0, 0);
 			item.rare = 0;
 			item.UseSound = SoundID.Item1;

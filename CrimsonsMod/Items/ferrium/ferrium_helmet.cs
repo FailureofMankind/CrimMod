@@ -42,11 +42,11 @@ namespace CrimsonsMod.Items.ferrium
 		public override void UpdateArmorSet(Player player)
 		{
 			player.setBonus = "10% increased damage\nIncreased life and mana regeneration\nMelee weapons set enemies ablaze when hit by the blade only when health is above 50%\nYou take more damage when your health is above 50%, and take less damage under 50%";
-			player.thrownDamage *= 1.10f;
-			player.meleeDamage *= 1.10f;
-			player.magicDamage *= 1.10f;
-			player.rangedDamage *= 1.10f;
-			player.minionDamage *= 1.10f;
+			player.thrownDamage += 0.10f;
+			player.meleeDamage += 0.10f;
+			player.magicDamage += 0.10f;
+			player.rangedDamage += 0.10f;
+			player.minionDamage += 0.10f;
 
 			player.lifeRegen += 3;
 			player.manaRegen += 25;

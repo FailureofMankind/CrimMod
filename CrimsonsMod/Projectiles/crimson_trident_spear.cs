@@ -18,9 +18,9 @@ public class crimson_trident_spear : ModProjectile
     
     public override void SetDefaults()
     {
-    projectile.width = 300;
-    projectile.height = 300;
-    projectile.aiStyle = 0;
+    projectile.width = 64;
+    projectile.height = 64;
+    projectile.aiStyle = 19;
     projectile.friendly  = true;
     projectile.hostile = false;
     projectile.tileCollide = false;
@@ -38,6 +38,12 @@ public class crimson_trident_spear : ModProjectile
 
     public override void AI()
 		{
+            int dust1 = Dust.NewDust(projectile.Center, 0, 0, 219);   //this adds a vanilla terraria dust to the projectile
+            Main.dust[dust1].noGravity = true; 
+            Main.dust[dust1].scale = 0.7f;
+            Main.dust[dust1].velocity.X = projectile.velocity.X * 0.8f;
+            Main.dust[dust1].velocity.Y = projectile.velocity.Y * 0.8f;
+
 			// Since we access the owner player instance so much, it's useful to create a helper local variable for this
 			// Sadly, Projectile/ModProjectile does not have its own
 			Player projOwner = Main.player[projectile.owner];
@@ -53,16 +59,16 @@ public class crimson_trident_spear : ModProjectile
 			{
 				if (movementFactor == 0f) // When initially thrown out, the ai0 will be 0f
 				{
-					movementFactor = -4f; // Make sure the spear moves forward when initially thrown out
+					movementFactor = -13f; // Make sure the spear moves forward when initially thrown out
 					projectile.netUpdate = true; // Make sure to netUpdate this spear
 				}
 				if (projOwner.itemAnimation < projOwner.itemAnimationMax / 3) // Somewhere along the item animation, make sure the spear moves back
 				{
-					movementFactor -= .5f;
+					movementFactor -= 2f;
 				}
 				else // Otherwise, increase the movement factor
 				{
-					movementFactor += .5f;
+					movementFactor += 2f;
 				}
 			}
 			// Change the spear position based off of the velocity and the movementFactor
@@ -82,10 +88,18 @@ public class crimson_trident_spear : ModProjectile
 			}
         }
 
+
+		
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit) //When you hit an NPC
         {
             target.immune[projectile.owner] = 0;
-        }
+            int dust = Dust.NewDust(target.Center, 0, 0, 219);   //this adds a vanilla terraria dust to the projectile
+            Main.dust[dust].noGravity = true; 
+            Main.dust[dust].scale = 1.2f;
+            Main.dust[dust].velocity *= 8f;
+            Projectile.NewProjectile(target.Center.X, target.Center.Y, 0, 0, mod.ProjectileType("crimson_projHeal"), projectile.damage, 0, Main.myPlayer); //Spawning a projectile        
+
+		}
 		
 }
 }

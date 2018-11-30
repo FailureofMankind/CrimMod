@@ -29,7 +29,7 @@ namespace CrimsonsMod.Items.ArmorExtension
 
 		public override void UpdateEquip(Player player)
 		{
-			player.thrownDamage *= 1.15f;
+			player.thrownDamage += 0.15f;
 		}
 		
         
@@ -41,11 +41,12 @@ namespace CrimsonsMod.Items.ArmorExtension
 
 		public override void UpdateArmorSet(Player player)
 		{
-			player.setBonus = "13% increased thrown critical strike chance\n50% chance to not consume thrown items\nIncreased throwing velocity";
+			player.setBonus = "13% increased thrown critical strike chance\n50% chance to not consume thrown items\nThrowing weapons set enemies on fire";
 			player.thrownCrit += 13;
             player.thrownCost50 = true; //50% chance not to consume thrown item
 
-            player.thrownVelocity *= 5f;
+			CrimsonPlayer modplayer = player.GetModPlayer<CrimsonPlayer>(mod);
+            modplayer.moltenVisor = true;
  		}
 
 		public override void ArmorSetShadows(Player player)

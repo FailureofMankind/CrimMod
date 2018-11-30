@@ -33,8 +33,8 @@ namespace CrimsonsMod.Items.Weapons.shortswords
         
 		public override void OnHitNPC(Player player, NPC target, int damage, float knockback, bool crit)
         {
-            Projectile.NewProjectile(player.position.X, (int)(player.position.Y + 40), -5, -4, 22, damage, knockback, player.whoAmI, 0f, 0f);
-            Projectile.NewProjectile(player.position.X, (int)(player.position.Y + 40), 5, -4, 22, damage, knockback, player.whoAmI, 0f, 0f);
+            Projectile.NewProjectile(target.Center.X, target.Center.Y, -5, -4, 22, damage, 0f, player.whoAmI, 0f, 0f);
+            Projectile.NewProjectile(target.Center.X, target.Center.Y, 5, -4, 22, damage, 0f, player.whoAmI, 0f, 0f);
         //projectile id aqua stream
 		}
 

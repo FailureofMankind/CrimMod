@@ -17,7 +17,7 @@ namespace CrimsonsMod.Items.Weapons
 		{
 			// Alter any of these values as you see fit, but you should probably keep useStyle on 1, as well as the noUseGraphic and noMelee bools
 			item.shootSpeed = 30f;
-			item.damage = 1000;
+			item.damage = 3000;
 			item.knockBack = 5f;
 			item.useStyle = 1;
 			item.useAnimation = 15;

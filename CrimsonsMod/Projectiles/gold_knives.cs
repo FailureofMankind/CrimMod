@@ -43,7 +43,7 @@ namespace CrimsonsMod.Projectiles
 
             projectile.position.Y += (int)(Math.Sin(radWaveyBoi * 5) * 3);
 
-            Dust dust = Dust.NewDustDirect(projectile.position, 0, 0, 10);
+            Dust dust = Dust.NewDustDirect(projectile.Center, 0, 0, 10);
             dust.noGravity = true;
             dust.scale = 0.8f;
             dust.velocity *= 0;

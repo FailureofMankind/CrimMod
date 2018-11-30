@@ -12,7 +12,7 @@ namespace CrimsonsMod.Items.Weapons
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("True Polaris");
-			Tooltip.SetDefault("'Wait wasnt the north star just over ther- AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'\nYou are holding the destruction of countless civilizations and downfall of the moon empire\nExplodes on impact and releases nebula blasts\nHas a chance to spawn a massive tornado vortex");
+			Tooltip.SetDefault("'Wait wasnt the north star just over ther-'\nYou are holding the destruction of countless civilizations\nExplodes into beams on impact");
 		}
 		public override void SetDefaults()
 		{
@@ -31,13 +31,12 @@ namespace CrimsonsMod.Items.Weapons
 			item.rare = 10;
 			item.UseSound = SoundID.Item116;
 			item.autoReuse = true;
-			item.shootSpeed = 25f;
+			item.shootSpeed = 40f;
 			item.shoot = mod.ProjectileType ("true_polaris");
-
 		}
 		
 		
-		public override void AddRecipes()
+		/*public override void AddRecipes()
 		{
             ModRecipe crimson = new ModRecipe(mod);
             crimson.AddIngredient(null, "polaris");
@@ -68,6 +67,6 @@ namespace CrimsonsMod.Items.Weapons
 			corrupt.AddTile(TileID.LunarCraftingStation);
             corrupt.SetResult(this);
             corrupt.AddRecipe();
-		}
+		}*/
 	}
 }

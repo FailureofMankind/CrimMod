@@ -20,7 +20,7 @@ namespace CrimsonsMod.Projectiles
 			projectile.height = 16;
 			projectile.aiStyle = -1;
 			projectile.friendly = true;
-			projectile.melee = true;
+			projectile.thrown = true;
 			projectile.penetrate = 50;
 			projectile.hide = true;
 		}
@@ -115,7 +115,6 @@ namespace CrimsonsMod.Projectiles
 				0.75f; // Change velocity based on delta center of targets (difference between entity centers)
 			projectile.netUpdate = true; // netUpdate this javelin
 			
-			projectile.damage = 35; // Makes sure the sticking javelins do not deal damage anymore
 
 			// The following code handles the javelin sticking to the enemy hit.
 			int maxStickingJavelins = 100; // This is the max. amount of javelins being able to attach
@@ -202,17 +201,7 @@ namespace CrimsonsMod.Projectiles
 				// Spawn some random dusts as the javelin travels
 				if (Main.rand.Next(1) == 0)
 				{
-					Dust dust = Dust.NewDustDirect(projectile.position, projectile.height, projectile.width, mod.DustType<Dusts.Powder>(),
-						projectile.velocity.X * .2f, projectile.velocity.Y * .2f, 200, Scale: 1.2f);
-					dust.velocity += projectile.velocity * 0.3f;
-					dust.velocity *= 0.2f;
-				}
-				if (Main.rand.Next(4) == 0)
-				{
-					Dust dust = Dust.NewDustDirect(projectile.position, projectile.height, projectile.width, mod.DustType<Dusts.Powder>(),
-						0, 0, 254, Scale: 0.3f);
-					dust.velocity += projectile.velocity * 0.5f;
-					dust.velocity *= 0.5f;
+					Dust.NewDust(projectile.Center, 0, 0, 219);
 				}
 			}
 			// This code is ran when the javelin is sticking to a target
@@ -260,8 +249,54 @@ namespace CrimsonsMod.Projectiles
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit) //When you hit an NPC
         {
             target.immune[projectile.owner] = 0;
-            Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, 0, 0, mod.ProjectileType("crimson_proj"), 10000, projectile.knockBack, Main.myPlayer, 0f, 0f); //Spawning a projectile			
+			int dust = Dust.NewDust(target.Center, 0, 0, 219);   //this adds a vanilla terraria dust to the projectile
+            Main.dust[dust].noGravity = true; 
+            Main.dust[dust].scale = 1.2f;
+            Main.dust[dust].velocity.X *= 0f;
+            Main.dust[dust].velocity.Y *= 10f;
+
+			int dust1 = Dust.NewDust(target.Center, 0, 0, 219);   //this adds a vanilla terraria dust to the projectile
+            Main.dust[dust1].noGravity = true; 
+            Main.dust[dust1].scale = 1.2f;
+            Main.dust[dust1].velocity.X *= 0f;
+            Main.dust[dust1].velocity.Y *= -10f;
+			
+			int dust2 = Dust.NewDust(target.Center, 0, 0, 219);   //this adds a vanilla terraria dust to the projectile
+            Main.dust[dust2].noGravity = true; 
+            Main.dust[dust2].scale = 1.2f;
+            Main.dust[dust2].velocity.X *= -10f;
+            Main.dust[dust2].velocity.Y *= 0f;
+
+			int dust3 = Dust.NewDust(target.Center, 0, 0, 219);   //this adds a vanilla terraria dust to the projectile
+            Main.dust[dust3].noGravity = true; 
+            Main.dust[dust3].scale = 1.2f;
+            Main.dust[dust3].velocity.X *= -10f;
+            Main.dust[dust3].velocity.Y *= 0f;
+
+			//too lazy to create a loop lmao
+
         }
+		int bounces = 10;
+        public override bool OnTileCollide(Vector2 oldVelocity)
+		{
+			if (projectile.velocity.X != oldVelocity.X)
+			{
+				projectile.velocity.X = -oldVelocity.X;
+			}
+			if (projectile.velocity.Y != oldVelocity.Y)
+			{
+				projectile.velocity.Y = -oldVelocity.Y;
+			}
+			
+			bounces--;
+			if(bounces <= 0)
+			{
+				projectile.penetrate = 0;
+			}
+			return false;
+		}        
+
+
 		
 	}
 }

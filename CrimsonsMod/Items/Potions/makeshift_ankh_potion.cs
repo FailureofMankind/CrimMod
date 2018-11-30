@@ -33,16 +33,17 @@ namespace CrimsonsMod.Items.Potions
 		public override void AddRecipes()
 		{
 			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(ItemID.BottledWater, 2);
+			recipe.AddIngredient(ItemID.BottledWater, 4);
 			recipe.AddIngredient(ItemID.Daybloom, 5);
 			recipe.AddIngredient(ItemID.Waterleaf);
-			recipe.AddIngredient(ItemID.Blinkroot);
+			recipe.AddIngredient(ItemID.Blinkroot, 2);
 			recipe.AddIngredient(ItemID.Shiverthorn);
 			recipe.AddIngredient(ItemID.Fireblossom);
 			recipe.AddIngredient(ItemID.Feather);
-			recipe.AddIngredient(null, "DryScales", 5);
+			recipe.AddIngredient(null, "DryScales", 2);
+			recipe.AddIngredient(null, "purity_shard", 5);
 			recipe.AddTile(TileID.Bottles);
-			recipe.SetResult(this);
+			recipe.SetResult(this, 2);
 			recipe.AddRecipe();
 		}
 	}

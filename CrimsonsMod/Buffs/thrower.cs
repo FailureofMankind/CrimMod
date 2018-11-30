@@ -17,7 +17,7 @@ namespace CrimsonsMod.Buffs
 
 		public override void Update(Player player, ref int buffIndex)
 		{
-           player.thrownDamage *= 1.05f;
+           player.thrownDamage += 0.05f;
            player.thrownCrit += 5;
         }
 	}

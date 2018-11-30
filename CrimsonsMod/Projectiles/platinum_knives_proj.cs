@@ -24,7 +24,7 @@ namespace CrimsonsMod.Projectiles
 			projectile.aiStyle = 1;
 			projectile.friendly = true;
 			projectile.thrown = true;
-			projectile.penetrate = 2;
+			projectile.penetrate = 5;
 			projectile.timeLeft = 600;
             projectile.alpha = 0;			
 			projectile.extraUpdates = 1;
@@ -45,6 +45,8 @@ namespace CrimsonsMod.Projectiles
 				projectile.velocity.Y = -oldVelocity.Y;
 			}
 			
+			projectile.penetrate--;
+			projectile.velocity *= 1.05f;
 			return false;
 		}        
 
