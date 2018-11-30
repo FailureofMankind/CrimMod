@@ -12,7 +12,6 @@ namespace CrimsonsMod.Items.manganese
 		{
 			DisplayName.SetDefault("Anhydrous Stars");
 			Tooltip.SetDefault("'The air around the stars are goes dry...'");
-
 		}
 		public override void SetDefaults()
 		{
