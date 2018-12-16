@@ -23,7 +23,12 @@ namespace CrimsonsMod.NPCs
                 return true;
             }
         }        
-            
+
+        public bool crystalCrush;
+        public override void ResetEffects(NPC npc)
+        {
+			crystalCrush = false;
+		}    
         /*public override void UpdateLifeRegen(NPC npc, ref int damage)
         {
             if(septic_curse == true)
@@ -35,6 +40,22 @@ namespace CrimsonsMod.NPCs
         
         public override void DrawEffects(NPC npc, ref Color drawColor)
 		{
+            if(crystalCrush)
+            {
+                if(Main.rand.Next(3) == 1)
+                {
+                    int crystalCrushDust = Dust.NewDust(npc.position - new Vector2(2f, 2f), npc.width + 4, npc.height + 4, 177, npc.velocity.X * 0.4f, npc.velocity.Y * 0.4f, 100, default(Color), 3.5f);
+                    Main.dust[crystalCrushDust].noGravity = true;
+                    Main.dust[crystalCrushDust].velocity *= 1.8f;
+                    Main.dust[crystalCrushDust].velocity.Y -= 0.5f;
+                    
+                    if (Main.rand.NextBool(4))
+                    {
+                        Main.dust[crystalCrushDust].noGravity = false;
+                        Main.dust[crystalCrushDust].scale *= 0.5f;
+                    }
+                }
+            }
         }
         
         public override void NPCLoot(NPC npc)
@@ -106,7 +127,7 @@ namespace CrimsonsMod.NPCs
 
 			if (npc.type == 35)
             {
-                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("necromancer"), 1);
+                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("necromancer"), 1);
             }
 
             if (npc.type == NPCID.DukeFishron)  
@@ -183,29 +204,32 @@ namespace CrimsonsMod.NPCs
                 }
             }
 
-            if (Main.player[Player.FindClosest(npc.position, npc.width, npc.height)].ZoneCorrupt)  
+            if (Main.player[Player.FindClosest(npc.position, npc.width, npc.height)].ZoneCorrupt && Main.rand.Next(3) == 0)  
             {
-                if(!Main.hardMode && Main.rand.Next(10) == 0)
+                if(!Main.hardMode && npc.type == mod.NPCType("vile_shooter"))
                 {
-                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("vile_core"), Main.rand.Next(5, 10));
+                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("vile_core"), Main.rand.Next(2, 10));
                 }
-                if(Main.hardMode && Main.rand.Next(75) == 0)
+                if(Main.hardMode && npc.type == 473) //corrupt mimic
                 {
-                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("vile_core"), Main.rand.Next(5, 10));
+                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("vile_core"), Main.rand.Next(15, 40));
                 }
             }            
-            if (Main.player[Player.FindClosest(npc.position, npc.width, npc.height)].ZoneCrimson)  
+            if (Main.player[Player.FindClosest(npc.position, npc.width, npc.height)].ZoneCrimson && Main.rand.Next(3) == 0)  
             {
-                if(!Main.hardMode && Main.rand.Next(10) == 0)
+                if(!Main.hardMode && npc.type == mod.NPCType("grotesque"))
                 {
-                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("parasitic_organ"), Main.rand.Next(5, 10));
+                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("parasitic_organ"), Main.rand.Next(2, 10));
                 }
-                if(Main.hardMode && Main.rand.Next(75) == 0)
+                if(Main.hardMode && npc.type == 474) //crimson mimic
                 {
-                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("parasitic_organ"), Main.rand.Next(5, 10));
+                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("parasitic_organ"), Main.rand.Next(15, 40));
                 }
             }                       
-            
+			if (npc.type == 56)
+            {
+                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ItemID.Vine, Main.rand.Next(1, 5));
+            }
             
             
             

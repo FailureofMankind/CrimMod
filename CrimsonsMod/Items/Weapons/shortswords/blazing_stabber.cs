@@ -15,7 +15,7 @@ namespace CrimsonsMod.Items.Weapons.shortswords
 		}
 		public override void SetDefaults()
 		{
-			item.damage = 39;
+			item.damage = 24;
 			item.melee = true;
 			item.width = 32;
 			item.height = 32;
@@ -33,8 +33,8 @@ namespace CrimsonsMod.Items.Weapons.shortswords
 
         public override void OnHitNPC(Player player, NPC target, int damage, float knockback, bool crit)
         {
-            Projectile.NewProjectile(player.position.X, (int)(player.position.Y + 20), -2, -1, 15, damage, knockback, player.whoAmI, 0f, 0f);
-            Projectile.NewProjectile(player.position.X, (int)(player.position.Y + 20), 2, -1, 15, damage, knockback, player.whoAmI, 0f, 0f);
+            Projectile.NewProjectile(target.Center.X, (int)(target.position.Y - 60), -2, -1, 15, damage, knockback, player.whoAmI, 0f, 0f);
+            Projectile.NewProjectile(target.Center.X, (int)(target.position.Y - 60), 2, -1, 15, damage, knockback, player.whoAmI, 0f, 0f);
         
 			target.AddBuff(24, 600); //buff id onfire
 		}

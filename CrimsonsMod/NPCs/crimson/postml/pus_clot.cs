@@ -52,6 +52,11 @@ namespace CrimsonsMod.NPCs.crimson.postml
             npc.rotation = rotation + ((float)Math.PI * 0.5f);
         }
 
+		public override void OnHitPlayer(Player player, int target, bool crit)
+		{
+			player.AddBuff(BuffID.Ichor, (60 * 20), true);
+		}
+
 		public override float SpawnChance(NPCSpawnInfo spawnInfo)
 		{
 			if(spawnInfo.player.ZoneCrimson && MyWorld.ultraHardmode == true)
@@ -59,6 +64,13 @@ namespace CrimsonsMod.NPCs.crimson.postml
 				return 0.2f;
 			}			
 			return 0f;
+		}
+        public override void NPCLoot()
+		{
+			if (Main.rand.Next(2) == 0)
+			{
+				Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("demonic_blood"), Main.rand.Next(2, 10));
+			}
 		}
 	}
 }

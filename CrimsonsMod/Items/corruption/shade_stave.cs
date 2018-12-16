@@ -11,13 +11,13 @@ namespace CrimsonsMod.Items.corruption
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Shade Stave");	
-			Tooltip.SetDefault("Move your cursor at the enemies to eat away at their flesh");
+			Tooltip.SetDefault("Point your cursor at enemies to eat at their flesh");
 			Item.staff[item.type] = true; //this makes the useStyle animate as a staff instead of as a gun
 		}
 
 		public override void SetDefaults()
 		{
-			item.damage = 12;
+			item.damage = 9;
 			item.magic = true;
 			item.mana = 4;
 			item.width = 82;

@@ -27,7 +27,7 @@ namespace CrimsonsMod.Items
 			item.UseSound = SoundID.Item1;
 			item.autoReuse = true;
 			item.shootSpeed = 10f;
-            item.shoot = mod.ProjectileType("barkwoodProjShot");
+            item.shoot = mod.ProjectileType("crystal_armor_proj");
 
 		}        
 

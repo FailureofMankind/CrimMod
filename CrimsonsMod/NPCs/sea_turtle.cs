@@ -45,6 +45,7 @@ namespace CrimsonsMod.NPCs
 			animationType = 472;
 			npc.noTileCollide = true;
             npc.netUpdate = true;
+			bossBag = mod.ItemType("seaturtleBag");			
 		}
 	
 		public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
@@ -181,5 +182,18 @@ namespace CrimsonsMod.NPCs
             Projectile.NewProjectile(npc.position.X, npc.position.Y, (int)(Main.rand.Next(-10, 10)), (int)(Main.rand.Next(-10, 10)), mod.ProjectileType("aerossault_beam"), npc.damage, 3f, Main.myPlayer, npc.whoAmI);        
         
         }
-	}
+
+        public override void NPCLoot()
+        {
+            if(Main.expertMode)
+            {
+                npc.DropBossBags();
+            }
+            if(!Main.expertMode)
+            {
+                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("DryScales"), Main.rand.Next(20, 50));
+                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("manganese_bar"), Main.rand.Next(7, 16));
+            }
+        }
+    }
 }
