@@ -1,7 +1,7 @@
 using Terraria;
 using Terraria.ModLoader;
 
-namespace CrimsonsMod.Items.ManganeseTurtle
+namespace CrimsonsMod.Items.boss.ManganeseTurtle
 {
 	[AutoloadEquip(EquipType.Wings)]
 	public class DryWings : ModItem

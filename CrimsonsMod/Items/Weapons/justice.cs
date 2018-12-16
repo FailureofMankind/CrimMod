@@ -25,6 +25,7 @@ namespace CrimsonsMod.Items.Weapons
 			item.useAnimation = 6;
             item.mana = 2;
 			item.noUseGraphic = true;
+			item.noMelee = true;
 			item.useStyle = 1;
 			item.knockBack = 1;
 			item.value = 1000;

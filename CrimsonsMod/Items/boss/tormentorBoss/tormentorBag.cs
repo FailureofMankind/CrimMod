@@ -3,7 +3,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace CrimsonsMod.Items.tormentorBoss
+namespace CrimsonsMod.Items.boss.tormentorBoss
 {
 	public class tormentorBag : ModItem
 	{

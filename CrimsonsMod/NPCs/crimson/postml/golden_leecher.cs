@@ -35,35 +35,6 @@ namespace CrimsonsMod.NPCs.crimson.postml
 			npc.value = 25f; // npc default to being immune to the Confused debuff. Allowing confused could be a little more work depending on the AI. npc.confused is true while the npc is confused.
 		}
 
-		int count = 0;
-		public void AI()
-		{
-			count++;
-			if(count > 480)
-			{
-				npc.aiStyle = -1;
-				oofer();
-				count = 0;
-				npc.aiStyle = 5;				
-			}
-		}
-		private void oofer()
-        {
-            player = Main.player[npc.target];
-
-            Vector2 velocityShoot = player.Center - npc.Center;
-            float magnitude = (float)Math.Sqrt(velocityShoot.X * velocityShoot.X + velocityShoot.Y * velocityShoot.Y);
-            if(magnitude > 0)
-            {
-                velocityShoot *= 50f / magnitude;
-            } 
-            else
-            {
-                velocityShoot = new Vector2(0f, 30f);
-            }            
-            npc.velocity = velocityShoot;
-        }
-
 		public override float SpawnChance(NPCSpawnInfo spawnInfo)
 		{
 			if(spawnInfo.player.ZoneCrimson && MyWorld.ultraHardmode == true)
@@ -72,10 +43,18 @@ namespace CrimsonsMod.NPCs.crimson.postml
 			}			
 			return 0f;
 		}
+
+		public override void OnHitPlayer(Player player, int target, bool crit)
+		{
+			player.AddBuff(BuffID.Ichor, (60 * 25), true);
+		}
+
         public override void NPCLoot()
 		{
 			if (Main.rand.Next(2) == 0)
-				Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, 1);
+			{
+				Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("demonic_blood"), Main.rand.Next(2, 10));
+			}
 		}
     }
 }

@@ -16,7 +16,7 @@ namespace CrimsonsMod.Items.corruption
 
 		public override void SetDefaults()
 		{
-			item.damage = 10;
+			item.damage = 7;
 			item.magic = true;
 			item.mana = 7;
 			item.width = 82;

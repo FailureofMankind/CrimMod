@@ -3,7 +3,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace CrimsonsMod.Items.ManganeseTurtle
+namespace CrimsonsMod.Items.boss.ManganeseTurtle
 {
 	public class seaturtleBag : ModItem
 	{
@@ -31,10 +31,15 @@ namespace CrimsonsMod.Items.ManganeseTurtle
 
 		public override void OpenBossBag(Player player)
 		{
-			player.QuickSpawnItem(mod.ItemType("manganese_bar"), Main.rand.Next(5,20));   			
+			player.QuickSpawnItem(mod.ItemType("manganese_bar"), Main.rand.Next(10,25));   			
 			player.QuickSpawnItem(mod.ItemType("DryScales"), Main.rand.Next(35,80));   			
 					
 			player.QuickSpawnItem(mod.ItemType("dry_capsule"));   //expert drop
+
+			if(NPC.downedBoss3)
+			{
+				player.QuickSpawnItem(mod.ItemType("DryWings"));   //expert drop
+			}
 		}
 	}
 }

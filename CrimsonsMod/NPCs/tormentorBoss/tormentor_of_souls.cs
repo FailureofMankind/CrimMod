@@ -17,8 +17,6 @@ namespace CrimsonsMod.NPCs.tormentorBoss
 	public class tormentor_of_souls : ModNPC
 	{
 		private Player player;	
-
-
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Tormentor of Souls");
@@ -43,7 +41,7 @@ namespace CrimsonsMod.NPCs.tormentorBoss
 			npc.aiStyle = 0;
 			animationType = 35;
 			npc.noTileCollide = true;
-			//bossBag = mod.ItemType("seaturtleBag");			
+			bossBag = mod.ItemType("tormentorBag");			
 		}
 	
 		public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
@@ -60,11 +58,8 @@ namespace CrimsonsMod.NPCs.tormentorBoss
 
             Target(); //Maximus Pedophilius
 
-            //Attack(); //get ye ass clapped
-
             DespawnHandler(); // boredom lmao
         }	
-
 
 		private void Target()
         {
@@ -99,7 +94,6 @@ namespace CrimsonsMod.NPCs.tormentorBoss
             {
                 maxAttackMode = 2;
             }
-            //timer section
 
             //attack mode: fly above player
             if(attackMode == 0)
@@ -160,7 +154,6 @@ namespace CrimsonsMod.NPCs.tormentorBoss
             }            
             Projectile.NewProjectile(npc.Center.X, npc.Center.Y, velocityShoot.X, velocityShoot.Y, mod.ProjectileType("tormentorShenaniganBall"), 12, 5, player.whoAmI, 0f, 0f);
         }
-        
 
         private void moveThyArse()
         {
@@ -222,9 +215,9 @@ namespace CrimsonsMod.NPCs.tormentorBoss
             }            
             npc.velocity = velocityShoot;
 
-            float numberProjectiles = 5; // This defines how many projectiles to shot
+            float numberProjectiles = 5; // This defines how many projectiles to shoot
             Vector2 p0sition = npc.position;
-            float rotation = MathHelper.ToRadians(60);
+            float rotation = MathHelper.ToRadians(40);
             p0sition += Vector2.Normalize(velocityShoot) * 45f;
             for (int i = 0; i < numberProjectiles; i++)
             {
@@ -248,9 +241,10 @@ namespace CrimsonsMod.NPCs.tormentorBoss
 
            
         }
-
-
-
+        private float Magnitude(Vector2 mag)
+        {
+            return (float)Math.Sqrt(mag.X * mag.X + mag.Y * mag.Y);
+        }
 
         public override bool? DrawHealthBar(byte hbPosition, ref float scale, ref Vector2 position)
         {
@@ -276,39 +270,5 @@ namespace CrimsonsMod.NPCs.tormentorBoss
             }
         }				
 
-		private void Attack()
-        {
-            
-
-
-        }
-
-        private float Magnitude(Vector2 mag)
-        {
-            return (float)Math.Sqrt(mag.X * mag.X + mag.Y * mag.Y);
-        }
-
-
-
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-	
-	
-	
 	}
 }

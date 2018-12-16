@@ -22,7 +22,7 @@ namespace CrimsonsMod.Projectiles
 			projectile.CloneDefaults(507);
 			aiType = 507;            
 			projectile.width = 16;
-			projectile.height = 48;
+			projectile.height = 16;
 			projectile.friendly = true;
 			projectile.thrown = true;
 			projectile.penetrate = 1;
@@ -41,7 +41,10 @@ namespace CrimsonsMod.Projectiles
         
 		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
 		{
-        	Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, 0, 0, 296, projectile.damage, projectile.knockBack, Main.myPlayer, 0f, 0f); //Spawning a projectile
+        	int a = Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, 0, 0, 296, projectile.damage, projectile.knockBack, Main.myPlayer, 0f, 0f); //Spawning a projectile
+			Main.projectile[a].magic = false;
+			Main.projectile[a].thrown = true;
+			Main.projectile[a].timeLeft = 40;
         }
 
                    

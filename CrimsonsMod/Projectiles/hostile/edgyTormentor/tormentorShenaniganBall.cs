@@ -25,7 +25,6 @@ namespace CrimsonsMod.Projectiles.hostile.edgyTormentor
             projectile.alpha = 255;		
             projectile.extraUpdates = 1;
             projectile.tileCollide = false;
-            projectile.netUpdate = true;
             
         }
 		

@@ -14,7 +14,7 @@ namespace CrimsonsMod.Items.corruption
 		}
 		public override void SetDefaults()
 		{
-			item.damage = 11;
+			item.damage = 14;
 			item.melee = true;
 			item.width = 48;
 			item.height = 48;

@@ -34,7 +34,11 @@ namespace CrimsonsMod.NPCs.purity
 
 		public override float SpawnChance(NPCSpawnInfo spawnInfo)
 		{
-            return SpawnCondition.OverworldDaySlime.Chance * 0.1f;
+			if(!spawnInfo.player.ZoneCorrupt && !spawnInfo.player.ZoneCrimson && spawnInfo.player.ZoneOverworldHeight && !Main.hardMode)
+			{
+				return 0.02f;
+			}			
+			return 0f;
 		}
 
         public override void NPCLoot()

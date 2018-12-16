@@ -37,7 +37,7 @@ namespace CrimsonsMod.Projectiles
         {
             Player player = Main.player[projectile.owner];
 
-            projectile.rotation += 3;
+            projectile.rotation += 10;
             count++;
             if(count > (projectile.timeLeft / 5)) 
             {

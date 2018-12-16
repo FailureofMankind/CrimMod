@@ -20,7 +20,7 @@ namespace CrimsonsMod.Items.corruption
 
 		public override void SetDefaults()
 		{
-			item.useStyle = 10;
+			item.useStyle = 6;
 			item.width = 42;
 			item.height = 42;
 			item.useAnimation = 5;
