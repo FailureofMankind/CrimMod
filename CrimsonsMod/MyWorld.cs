@@ -16,12 +16,7 @@ using Microsoft.Xna.Framework.Graphics;
 namespace CrimsonsMod
 {
 	public class MyWorld : ModWorld
-	{
-		public static bool firstBoss = false;
-		public static bool spawn_ferrium_ore = false;
-		public static bool aero_aggression = false;
-		public static bool ultraHardmode = false;
-
+	{		
 		public override void ModifyWorldGenTasks(List<GenPass> tasks, ref float totalWeight)
 		{
 			int ShiniesIndex = tasks.FindIndex(genpass => genpass.Name.Equals("Shinies"));
@@ -33,8 +28,7 @@ namespace CrimsonsMod
 
 					for (int k = 0; k < (int)((double)(Main.maxTilesX * (Main.maxTilesY+(Main.maxTilesY/60))) * 6E-05); k++)
 					{
-						WorldGen.TileRunner(WorldGen.genRand.Next(0, Main.maxTilesX), WorldGen.genRand.Next((int)WorldGen.worldSurfaceLow, Main.maxTilesY), (double)WorldGen.genRand.Next(3, 10), WorldGen.genRand.Next(4, 13), mod.TileType("manganese_ore"), false, 0f, 0f, false, true);
-						WorldGen.TileRunner(WorldGen.genRand.Next(0, Main.maxTilesX), WorldGen.genRand.Next((int)WorldGen.rockLayer, Main.maxTilesY), (double)WorldGen.genRand.Next(3, 10), WorldGen.genRand.Next(2, 4), mod.TileType("aluminum_ore"), false, 0f, 0f, false, true);
+						WorldGen.TileRunner(WorldGen.genRand.Next(0, Main.maxTilesX), WorldGen.genRand.Next((int)WorldGen.worldSurfaceLow, Main.maxTilesY), (double)WorldGen.genRand.Next(3, 10), WorldGen.genRand.Next(4, 13), mod.TileType("placeholderTile"), false, 0f, 0f, false, true);
 					}
 				}));
 			}

@@ -15,12 +15,6 @@ namespace CrimsonsItems
     {
         public override void SetDefaults(Item item)
         {
-            if (item.type == ItemID.Acorn)
-            {
-                item.ammo = ItemID.Acorn;
-                item.maxStack = 999;
-            }
         }
     }
-
 }

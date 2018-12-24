@@ -163,12 +163,12 @@ namespace CrimsonsMod.NPCs.tormentorBoss
 
             if(npc.Center.X + 10 > player.Center.X)
             {
-                npc.velocity.X += -0.5f;
+                npc.velocity.X += -0.4f;
             }
 
             if(npc.Center.X -10 < player.Center.X)
             {
-                npc.velocity.X += 0.5f;
+                npc.velocity.X += 0.4f;
             }
             
             if(npc.Center.Y + 300 > player.Center.Y)
