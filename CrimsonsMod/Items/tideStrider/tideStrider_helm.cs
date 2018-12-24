@@ -7,14 +7,13 @@ using Terraria.ModLoader;
 namespace CrimsonsMod.Items.tideStrider
 {
 	[AutoloadEquip(EquipType.Head)]
-	public class tideStrider_helmet : ModItem
+	public class tideStrider_helm : ModItem
 	{
 		public override void SetStaticDefaults()
 		{
 			base.SetStaticDefaults();
 			DisplayName.SetDefault("Tide Strider Leggings");
 			Tooltip.SetDefault("You shine underwater!");
-            
 		}
 
 		public override void SetDefaults()
@@ -30,8 +29,12 @@ namespace CrimsonsMod.Items.tideStrider
 		{
             if(player.wet)
             {
-			    Lighting.AddLight(player.position, 0f, 0.9f, 1.3f);
+			    Lighting.AddLight((int)(player.position.X + (float)(player.width / 2)) / 16, (int)(player.position.Y + (float)(player.height / 2)) / 16, 0.2f, 1f, .7f);
             }
+			else
+			{
+			    Lighting.AddLight((int)(player.position.X + (float)(player.width / 2)) / 16, (int)(player.position.Y + (float)(player.height / 2)) / 16, 0f, 0.1f, 0.3f);
+			}
     	}
 		
         
