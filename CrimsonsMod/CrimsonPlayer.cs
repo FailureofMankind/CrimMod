@@ -23,21 +23,28 @@ namespace CrimsonsMod
     public class CrimsonPlayer : ModPlayer
     {
         public bool tideStrider = false;
+        public bool nettlevineArmor = false;
 
         public override void ResetEffects()
         {
             tideStrider = false;
+            nettlevineArmor = false;
         }
 
         public override void OnHitNPC(Item no, NPC target, int damage, float knockback, bool crit)
         {
-
+            if(nettlevineArmor && Main.rand.Next(4) == 1)
+            {
+                target.AddBuff(BuffID.Venom, 240);
+            }
         }
 
-        int geodeThrowingHealCount = 0;
         public override void OnHitNPCWithProj(Projectile projectile, NPC target, int damage, float knockback, bool crit)
 		{
-
+            if(nettlevineArmor && Main.rand.Next(4) == 1)
+            {
+                
+            }
         }
 
         public override void PostHurt(bool pvp, bool quiet, double damage, int hitDirection, bool crit)
@@ -52,13 +59,14 @@ namespace CrimsonsMod
         {            
 
         }
+
         public override void UpdateBadLifeRegen()
         {
 
         }
 
 
-        //chunks of useful shit
+        //chunks of useful shit, also thancc lynx
         private float Magnitude(Vector2 mag)
         {
             return (float)Math.Sqrt(mag.X * mag.X + mag.Y * mag.Y);
