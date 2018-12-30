@@ -9,7 +9,7 @@ namespace CrimsonsMod.Items.Materials.Boss
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Blood Tear");
-			Tooltip.SetDefault("'highly viscous liquid that functioned as tear, sweat, and blood for the eyebeast'");
+			Tooltip.SetDefault("'highly viscous liquid that functioned as tear, sweat, and blood for the eyebeast... also incredibly sticky!'");
 		}
 		public override void SetDefaults()
 		{

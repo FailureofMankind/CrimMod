@@ -10,14 +10,14 @@ namespace CrimsonsMod.Items.nettlevine.Buffs
 		public override void SetDefaults()
 		{
 			DisplayName.SetDefault("Empowerment: Ranged");
-			Description.SetDefault("5% increased ranged damage");
+			Description.SetDefault("12% increased ranged damage");
 			Main.buffNoSave[Type] = true;
             Main.debuff[Type] = false;
 		}
 
 		public override void Update(Player player, ref int buffIndex)
 		{
-            player.rangedDamage += 0.05f;
+            player.rangedDamage += 0.12f;
         }
 	}
 }
