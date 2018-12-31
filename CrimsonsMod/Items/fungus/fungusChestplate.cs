@@ -34,6 +34,7 @@ namespace CrimsonsMod.Items.fungus
 		{
 			ModRecipe recipe = new ModRecipe(mod);
 			recipe.AddIngredient(ItemID.GlowingMushroom, 5);
+			recipe.AddIngredient(mod.ItemType("bloodTear"), 3);
 			recipe.AddTile(TileID.Anvils);
 			recipe.SetResult(this);
 			recipe.AddRecipe();

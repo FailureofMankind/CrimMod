@@ -33,17 +33,38 @@ namespace CrimsonsMod
 
         public override void OnHitNPC(Item no, NPC target, int damage, float knockback, bool crit)
         {
-            if(nettlevineArmor && Main.rand.Next(4) == 1)
+            if(nettlevineArmor)
             {
-                target.AddBuff(BuffID.Venom, 240);
+                if(Main.rand.Next(29) == 1)
+                {
+                    player.AddBuff(mod.BuffType("nettlevineRanged"), (60 * 5), true);
+                }
+                if(Main.rand.Next(14) == 1)
+                {
+                    target.AddBuff(BuffID.Venom, 240);
+                }
             }
         }
 
         public override void OnHitNPCWithProj(Projectile projectile, NPC target, int damage, float knockback, bool crit)
 		{
-            if(nettlevineArmor && Main.rand.Next(4) == 1)
+            if(nettlevineArmor)
             {
-                
+                if( Main.rand.Next(29) == 1)
+                {
+                    if(projectile.melee)
+                    {
+                        player.AddBuff(mod.BuffType("nettlevineRanged"), (60 * 8), true);
+                    }
+                    if(projectile.ranged)
+                    {
+                        player.AddBuff(mod.BuffType("nettlevineMelee"), (60 * 8), true);
+                    }
+                }
+                if(Main.rand.Next(14) == 1)
+                {
+                    target.AddBuff(BuffID.Venom, 240);
+                }
             }
         }
 

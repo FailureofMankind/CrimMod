@@ -33,13 +33,21 @@ namespace CrimsonsMod.Items.nettlevine
 
 		public override void AddRecipes()
 		{
-			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(ItemID.Vine, 4);
-			recipe.AddIngredient(ItemID.JungleSpores, 10);
-			recipe.AddIngredient(ItemID.Stinger, 2);
-			recipe.AddTile(TileID.Anvils);
-			recipe.SetResult(this);
-			recipe.AddRecipe();
+			ModRecipe recipe1 = new ModRecipe(mod);
+			recipe1.AddIngredient(ItemID.JungleSpores, 5);
+			recipe1.AddIngredient(ItemID.Stinger, 2);
+			recipe1.AddIngredient(ItemID.ShadowScale, 5);
+			recipe1.AddTile(TileID.Anvils);
+			recipe1.SetResult(this);
+			recipe1.AddRecipe();
+
+			ModRecipe recipe2 = new ModRecipe(mod);
+			recipe2.AddIngredient(ItemID.JungleSpores, 5);
+			recipe2.AddIngredient(ItemID.Stinger, 2);
+			recipe2.AddIngredient(ItemID.TissueSample, 5);
+			recipe2.AddTile(TileID.Anvils);
+			recipe2.SetResult(this);
+			recipe2.AddRecipe();
 		}
 	}
 }

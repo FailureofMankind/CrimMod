@@ -17,8 +17,8 @@ namespace CrimsonsMod.Items.tideStrider.Buffs
 
 		public override void Update(Player player, ref int buffIndex)
 		{
-            player.moveSpeed += 0.1f;
-            player.maxRunSpeed += 1.5f;
+            player.moveSpeed += 0.3f;
+            player.maxRunSpeed += 1.7f;
         }
 	}
 }

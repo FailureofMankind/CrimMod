@@ -10,14 +10,14 @@ namespace CrimsonsMod.Items.nettlevine.Buffs
 		public override void SetDefaults()
 		{
 			DisplayName.SetDefault("Empowerment: Melee");
-			Description.SetDefault("5% increased melee damage");
+			Description.SetDefault("12% increased melee damage");
 			Main.buffNoSave[Type] = true;
             Main.debuff[Type] = false;
 		}
 
 		public override void Update(Player player, ref int buffIndex)
 		{
-            player.meleeDamage += 0.05f;
+            player.meleeDamage += 0.12f;
         }
 	}
 }
