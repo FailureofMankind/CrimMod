@@ -27,9 +27,9 @@ namespace CrimsonsMod.NPCs
         public override void NPCLoot(NPC npc)
         {
             //boss drops
-            if (npc.type == NPCID.EyeofCthulhu && !Main.expertMode)  
+            if (npc.type == NPCID.EyeofCthulhu)  
             {
-                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("bloodTear"), Main.rand.Next(6, 24));
+                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("bloodTear"), Main.rand.Next(12, 18));
             }
 
             //biome enemy drops

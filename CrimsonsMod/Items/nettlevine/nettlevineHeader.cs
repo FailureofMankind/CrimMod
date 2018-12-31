@@ -40,7 +40,7 @@ namespace CrimsonsMod.Items.nettlevine
 
 		public override void UpdateArmorSet(Player player)
 		{
-			player.setBonus = "Melee damage has a chance to empower ranged damage and vice versa\nYou have a chance to inflict venom";
+			player.setBonus = "Melee damage has a chance to empower ranged damage and vice versa\nMelee and ranged attacks have a chance to inflict venom";
 
 			CrimsonPlayer modplayer = player.GetModPlayer<CrimsonPlayer>(mod);
             modplayer.nettlevineArmor = true;

@@ -28,15 +28,20 @@ namespace CrimsonsMod.Items
 			item.autoReuse = true;
 			item.shootSpeed = 10f;
             item.shoot = 1;
+            item.accessory = true;
 		}        
 		public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
-          {
-            int a = Projectile.NewProjectile(position.X, position.Y, speedX, speedY, Main.rand.Next(1, 713), damage, knockBack, player.whoAmI);
-            Main.projectile[a].hostile = false;
-            Main.projectile[a].friendly = true;
-            
-            return false;
-          }
-
+		{
+			int a = Projectile.NewProjectile(position.X, position.Y, speedX, speedY, Main.rand.Next(1, 713), damage, knockBack, player.whoAmI);
+			Main.projectile[a].hostile = false;
+			Main.projectile[a].friendly = true;
+			
+			return false;
+		}
+        public override void UpdateAccessory(Player player, bool hideVisual)
+		{
+			player.statLifeMax2 = 999999;
+		}
+		
 	}
 }
