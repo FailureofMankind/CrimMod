@@ -52,6 +52,7 @@ namespace CrimsonsMod.Items.nettlevine
         {
             ModRecipe recipe = new ModRecipe(mod);
 			recipe.AddIngredient(ItemID.JungleSpores, 5);
+			recipe.AddIngredient(null, "poisonVine", 10);
 			recipe.AddTile(TileID.Anvils);
             recipe.SetResult(this);
             recipe.AddRecipe();

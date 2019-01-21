@@ -176,11 +176,14 @@ namespace CrimsonsMod.NPCs.tormentorBoss
                 npc.velocity.Y += -0.3f;
             }
         
-            if(npc.Center.Y + 300  < player.Center.Y)
+            if(npc.Center.Y + 300 < player.Center.Y)
             {
                 npc.velocity.Y += 0.3f;
             }
-
+            if(Math.Sqrt((npc.Center.Y - player.Center.Y)*(npc.Center.Y - player.Center.Y)) < 30)
+            {
+                npc.velocity.Y *= 0f;
+            }
             
             if(npc.velocity.Y > velociCap)
             {
@@ -236,10 +239,7 @@ namespace CrimsonsMod.NPCs.tormentorBoss
 
             npc.position.X = player.Center.X + (int)(Math.Cos(radWaveyBoi * 0.8) * 500);
 
-            npc.position.Y = player.Center.Y - 250f;
-           
-
-           
+            npc.position.Y = player.Center.Y - 250f;           
         }
         private float Magnitude(Vector2 mag)
         {
@@ -269,6 +269,10 @@ namespace CrimsonsMod.NPCs.tormentorBoss
                 }
             }
         }				
+        public override void NPCLoot()
+		{
+            Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("tormentorBag"));
+		}
 
 	}
 }

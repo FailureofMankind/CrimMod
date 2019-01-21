@@ -24,7 +24,7 @@ namespace CrimsonsMod.Items.tideStrider.Projectiles
 			projectile.friendly = true;
 			projectile.ranged = true;
             projectile.aiStyle = 1;
-			projectile.penetrate = 1;
+			projectile.penetrate = 10;
 			projectile.timeLeft = 180;			
 			projectile.tileCollide = true;
         }
