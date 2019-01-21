@@ -15,8 +15,10 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace CrimsonsMod
 {
-	public class MyWorld : ModWorld
+	public class CrimsonsWorld : ModWorld
 	{		
+		public static bool evilBossJungleActivation = false;
+
 		public override void ModifyWorldGenTasks(List<GenPass> tasks, ref float totalWeight)
 		{
 			int ShiniesIndex = tasks.FindIndex(genpass => genpass.Name.Equals("Shinies"));

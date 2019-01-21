@@ -54,6 +54,7 @@ namespace CrimsonsMod.Items.nettlevine
 		public override void AddRecipes()
 		{
 			ModRecipe recipe1 = new ModRecipe(mod);
+			recipe1.AddIngredient(null, "poisonVine", 5);
 			recipe1.AddIngredient(ItemID.Vine, 6);
 			recipe1.AddIngredient(ItemID.JungleSpores, 5);
 			recipe1.AddIngredient(ItemID.Stinger, 1);
@@ -63,6 +64,7 @@ namespace CrimsonsMod.Items.nettlevine
 			recipe1.AddRecipe();
 
 			ModRecipe recipe2 = new ModRecipe(mod);
+			recipe2.AddIngredient(null, "poisonVine", 5);
 			recipe2.AddIngredient(ItemID.Vine, 6);
 			recipe2.AddIngredient(ItemID.JungleSpores, 5);
 			recipe2.AddIngredient(ItemID.Stinger, 1);
