@@ -1,5 +1,5 @@
 author = Crimson
-version = 1.0
+version = 1.1
 displayName = Crimson Cataclysm
 homepage = https://discord.gg/C4RZwz8
 
