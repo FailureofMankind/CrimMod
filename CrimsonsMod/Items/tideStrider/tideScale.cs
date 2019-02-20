@@ -16,8 +16,8 @@ namespace CrimsonsMod.Items.tideStrider
 
 		public override void SetDefaults()
 		{
-			item.width = 24;
-			item.height = 24;
+			item.width = 26;
+			item.height = 26;
 			item.maxStack = 999;
 			item.rare = 1;
             item.value = Item.sellPrice(0, 0, 0, 30);

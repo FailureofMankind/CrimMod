@@ -20,7 +20,7 @@ namespace CrimsonsMod.Items.tideStrider
 			item.width = 64;
 			item.height = 64;
             item.scale = 0.7f;
-			item.useTime = 4;
+			item.useTime = 7;
 			item.useAnimation = 15;
 			item.useStyle = 1;
             item.useTurn = true;

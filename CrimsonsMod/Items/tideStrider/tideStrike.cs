@@ -19,15 +19,15 @@ namespace CrimsonsMod.Items.tideStrider
 			item.melee = true;
 			item.width = 48;
 			item.height = 48;
-			item.useTime = 15;
-			item.useAnimation = 15;
+			item.useTime = 19;
+			item.useAnimation = 19;
 			item.useStyle = 1;
 			item.knockBack = 5;
             item.value = Item.sellPrice(0, 0,90, 0);
             item.useTurn = true;
 			item.rare = 1;
 			item.UseSound = SoundID.Item1;
-			item.autoReuse = false;
+			item.autoReuse = true;
 
 		}
 

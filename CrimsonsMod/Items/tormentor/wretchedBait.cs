@@ -10,23 +10,22 @@ namespace CrimsonsMod.Items.tormentor
 		{
 			item.width = 28;
 			item.height = 32;
-			item.maxStack = 20;
 			item.useTurn = true;
 			item.autoReuse = false;
 			item.useAnimation = 18;
 			item.useTime = 18;
 			item.useStyle = 4;
-			item.consumable = true;
+			item.consumable = false;
 			item.value = 0;
 		}
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Wretched Bait");
-			Tooltip.SetDefault("Summons a horrific entity");
+			Tooltip.SetDefault("Lures in a horrific vile beast\nNon consumable");
 		}
 		public override bool CanUseItem(Player player)
 		{
-			return !NPC.AnyNPCs(mod.NPCType("tormentor_of_souls"));
+			return !NPC.AnyNPCs(mod.NPCType("tormentor_of_souls")) && player.ZoneCorrupt;
 		}
 		public override bool UseItem(Player player)
 		{
@@ -40,8 +39,9 @@ namespace CrimsonsMod.Items.tormentor
             recipe.AddIngredient(ItemID.RottenChunk, 2);
             recipe.AddIngredient(ItemID.VileMushroom, 1);
             recipe.AddIngredient(ItemID.DemoniteBar, 5);
+            recipe.AddIngredient(ItemID.ShadowScale, 5);
 			recipe.AddTile(TileID.DemonAltar);
-			recipe.SetResult(this, 2);
+			recipe.SetResult(this);
 			recipe.AddRecipe();
 		}
 	}

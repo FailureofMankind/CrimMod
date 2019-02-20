@@ -1,3 +1,5 @@
+//css_ref Terraria.dll
+
 using System;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
@@ -89,7 +91,9 @@ namespace CrimsonsMod.Projectiles
 				dust.noGravity = true;
 				dust.scale = 0.7f;
                 dust.velocity *= 10f;
-            }                
+            }
+
+            target.life -= (int)target.life/10;
             
             target.immune[projectile.owner] = 0;
 
@@ -106,7 +110,7 @@ namespace CrimsonsMod.Projectiles
                 {
                     velocityShoot = new Vector2(0f, 10f);
                 }            
-                int FUCKINGSTORMHELL = Projectile.NewProjectile(positionProj1.X, positionProj1.Y, velocityShoot.X, velocityShoot.Y, 668, (int)damage / 2, 5, Main.myPlayer, 0f, 0f);
+                int FUCKINGSTORMHELL = Projectile.NewProjectile(positionProj1.X, positionProj1.Y, velocityShoot.X, velocityShoot.Y, mod.ProjectileType("failuresThrowProjProj"), (int)damage / 2, 5, Main.myPlayer, 0f, 0f);
                 Main.projectile[FUCKINGSTORMHELL].minion = false;
                 Main.projectile[FUCKINGSTORMHELL].melee = true;
                 Main.projectile[FUCKINGSTORMHELL].tileCollide = false;
@@ -125,7 +129,7 @@ namespace CrimsonsMod.Projectiles
                 {
                     velocityShoot = new Vector2(0f, 10f);
                 }            
-                int FUCKINGSTORMHELL = Projectile.NewProjectile(positionProj2.X, positionProj2.Y, velocityShoot.X, velocityShoot.Y, 668, (int)damage / 2, 0, Main.myPlayer, 0f, 0f);
+                int FUCKINGSTORMHELL = Projectile.NewProjectile(positionProj2.X, positionProj2.Y, velocityShoot.X, velocityShoot.Y, mod.ProjectileType("failuresThrowProjProj"), (int)damage / 2, 0, Main.myPlayer, 0f, 0f);
                 Main.projectile[FUCKINGSTORMHELL].minion = false;
                 Main.projectile[FUCKINGSTORMHELL].melee = true;
                 Main.projectile[FUCKINGSTORMHELL].tileCollide = false;

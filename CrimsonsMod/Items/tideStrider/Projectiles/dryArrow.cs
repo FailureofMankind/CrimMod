@@ -31,13 +31,25 @@ namespace CrimsonsMod.Items.tideStrider.Projectiles
         
         public override void AI()
         {
-            if(Main.rand.Next(5) == 0)
+            if(Main.rand.Next(2) == 0)
             {
                 Dust dust = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, 15);
                 dust.noGravity = true;
                 dust.scale = 2f;
                 dust.velocity *= 0f;
             }
+        }
+
+        bool flagBITCH = true; //if true then bounce
+        public override bool OnTileCollide(Vector2 oldVelocity)
+		{
+            if(flagBITCH)
+            {
+                projectile.velocity.Y = -5f;
+                projectile.velocity.X = 0f;
+                flagBITCH = false;
+            }
+            return false;
         }
 
 
@@ -48,10 +60,10 @@ namespace CrimsonsMod.Items.tideStrider.Projectiles
                 Dust dust = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, 15);
                 dust.noGravity = true;
                 dust.scale = 2f;
-                dust.velocity.X = projectile.velocity.X;
-                dust.velocity.Y = projectile.velocity.Y;
+                dust.velocity.X = (float)Main.rand.Next(-5, 5);
+                dust.velocity.Y = (float)Main.rand.Next(-5, 5);
 			}
-			Main.PlaySound(SoundID.Item110, projectile.position);        
+			Main.PlaySound(SoundID.Item10, projectile.position);        
         }
 
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit) //When you hit an NPC

@@ -19,6 +19,7 @@ namespace CrimsonsMod.Items.tideStrider.Buffs
 		{
             player.moveSpeed += 0.3f;
             player.maxRunSpeed += 1.7f;
+			player.meleeSpeed += 0.35f;
         }
 	}
 }

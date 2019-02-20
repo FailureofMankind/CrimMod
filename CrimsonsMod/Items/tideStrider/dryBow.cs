@@ -11,7 +11,7 @@ namespace CrimsonsMod.Items.tideStrider
         public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Dry Bow");
-			Tooltip.SetDefault("Has a chance to shoot a bolt with your arrow");
+			Tooltip.SetDefault("Has a chance to shoot a dry arrow");
 		}
 
         public override void SetDefaults()

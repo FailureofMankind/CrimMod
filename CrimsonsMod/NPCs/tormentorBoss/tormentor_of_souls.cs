@@ -16,20 +16,25 @@ namespace CrimsonsMod.NPCs.tormentorBoss
 	[AutoloadBossHead]
 	public class tormentor_of_souls : ModNPC
 	{
-		private Player player;	
+		private Player player;
+        public int projectileDamage = 0;
+        public float movementFacter = 0; //xd
+        public float velociCap = 0;
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Tormentor of Souls");
+            Main.npcFrameCount[npc.type] = 10;
 		}
 
 		public override void SetDefaults()
 		{
-			npc.width = 100;
-			npc.height = 100;
-            npc.scale = 1.4f;
-			npc.damage = 30;
+			npc.width = 150;
+			npc.height = 150;
+			npc.damage = 20;
+            projectileDamage = 7;
+            movementFacter = 30f;
 			npc.defense = 4;
-			npc.lifeMax = 3500;
+			npc.lifeMax = 4200;
 			npc.HitSound = SoundID.NPCHit27;
 			npc.DeathSound = SoundID.NPCDeath22;
 			npc.boss = true;
@@ -43,7 +48,10 @@ namespace CrimsonsMod.NPCs.tormentorBoss
 			npc.noTileCollide = true;
 			bossBag = mod.ItemType("tormentorBag");			
 		}
-	
+		private void Target()
+        {
+            Player player = Main.player[npc.target]; // This will get the player target.
+        }        
 		public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
         {
             npc.lifeMax = (int)(npc.lifeMax * 0.500f * bossLifeScale);
@@ -52,90 +60,150 @@ namespace CrimsonsMod.NPCs.tormentorBoss
         }	
 
 		public override void AI()
-        {
-            
-            moveSets(); //fucking thrust that shit nibba
+        {   
+            moveSets(); //fucking thrust that shit nibbas
+
+            enrageModer();//begone THOT
 
             Target(); //Maximus Pedophilius
 
             DespawnHandler(); // boredom lmao
         }	
 
-		private void Target()
-        {
-            player = Main.player[npc.target]; // This will get the player target.
-        }	
+        bool coolMode = false; //when this true, shenanigans happen yes
+        bool coolModeDone = false;
+        int shenaniganModeTimer = 0;
+        int touhouTimer = 0;
 
-        int timer0 = 0;
+        int timer0 = 0; //because y not
         int timer1 = 0;
         int timer2 = 0;
         int timer3 = 0;
         int attackMode = 0;
         int maxAttackMode = 1;
-        int timerMax = 300;
+        int timerMax = 420;
         private void moveSets()
         {
-            //timer section
-            timer0++;
-            if(timer0 >= timerMax)
+            if(!coolMode)
             {
-                attackMode++;
-                timer0 = 0;
-            }
-            if(attackMode > maxAttackMode)
-            {
-                attackMode = 0;
-            }
-            if(npc.life < npc.lifeMax * 0.7 && npc.life > npc.lifeMax * 0.4)
-            {
-                timerMax = 180;
-            }
-            if(npc.life < npc.lifeMax * 0.4 && Main.expertMode)
-            {
-                maxAttackMode = 2;
-            }
-
-            //attack mode: fly above player
-            if(attackMode == 0)
-            {
-                moveThyArse();
-
-                timer1++;
-                if(timer1 >= 60)
+                npc.dontTakeDamage = false;
+                //timer section
+                timer0++;
+                if(timer0 >= timerMax)
                 {
-                    shootBall();
-                    timer1 = 0;
+                    attackMode++;
+                    timer0 = 0;
                 }
-            }
-
-            //attack mode: dash and spray
-            if(attackMode == 1)
-            {
-                timer2++;
-                if(timer2 >= 70 && npc.life > npc.lifeMax * 0.4)
+                if(attackMode > maxAttackMode)
                 {
-                    dashyB0i();
-                    timer2 = 0;
+                    attackMode = 0;
                 }
-                if(timer2 >= 50 && npc.life <= npc.lifeMax * 0.4)
+                if(npc.life < npc.lifeMax * 0.7 && npc.life > npc.lifeMax * 0.4)
                 {
-                    dashyB0i();
-                    timer2 = 0;
+                    timerMax = 210;
+                }
+                if(npc.life < npc.lifeMax * 0.4 && Main.expertMode)
+                {
+                    maxAttackMode = 2;
+                    if (!coolModeDone)
+                    {
+                        coolMode = true;
+                    }
                 }
 
-                npc.velocity.Y *= 0.95f;
-            }
-
-            //attack mode: swave yes
-            if(attackMode == 2)
-            {
-                hivemindCloneLmao();
-                timer3++;
-                if(timer3 >= 5)
+                //attack mode: fly above player
+                if(attackMode == 0)
                 {
-                    int lol = Projectile.NewProjectile(npc.Center.X, npc.Center.Y, Main.rand.Next(-10, 10), -5, mod.ProjectileType("tormentorShenaniganBall"), 7, 5, player.whoAmI, 0f, 0f);
-                    Main.projectile[lol].timeLeft = 480;
-                    timer3 = 0;
+                    moveThyArse();
+
+                    timer1++;
+                    if(timer1 >= 60)
+                    {
+                        shootBall();
+                        timer1 = 0;
+                    }
+                }
+
+                //attack mode: dash and spray
+                if(attackMode == 1)
+                {
+                    timer2++;
+                    if(timer2 >= 70 && npc.life > npc.lifeMax * 0.4)
+                    {
+                        dashyB0i();
+                        timer2 = 0;
+                    }
+                    if(timer2 >= 50 && npc.life <= npc.lifeMax * 0.4)
+                    {
+                        dashyB0i();
+                        timer2 = 0;
+                    }
+
+                    npc.velocity.Y *= 0.95f;
+                }
+
+                //attack mode: swave yes
+                if(attackMode == 2)
+                {
+                    hivemindCloneLmao();
+                    timer3++;
+                    if(timer3 >= 5)
+                    {
+                        int lol = Projectile.NewProjectile(npc.Center.X, npc.Center.Y, Main.rand.Next(-10, 10), -5, mod.ProjectileType("tormentorShenaniganBall"), projectileDamage, 5, player.whoAmI, 0f, 0f);
+                        Main.projectile[lol].timeLeft = 480;
+                        timer3 = 0;
+                    }
+                }
+            }
+            else
+            {
+                npc.dontTakeDamage = true;
+                
+                shenaniganModeTimer++;
+                if(shenaniganModeTimer > 60*20)
+                {
+                    coolModeDone = true;
+                    coolMode = false;
+                }
+
+                //ok now touhou phase hahayes
+                touhouTimer++;
+                if(touhouTimer < 60*10 && touhouTimer > 60*2) //brake
+                {
+                    npc.velocity *= 0.9f;
+                }
+                if(touhouTimer < 60*10 && touhouTimer > 60*2) //phase 1 uwu
+                {
+                    npc.localAI[0]++;
+                    //x is sine, y is cosine and have same function quik mafs
+                    float xVar = (float)Math.Sin(npc.localAI[0] * 0.85)*10;
+                    float yVar = (float)Math.Cos(npc.localAI[0] * 0.85)*10;
+                    Projectile.NewProjectile(npc.Center.X, npc.Center.Y, xVar, yVar, mod.ProjectileType("shenaniganTouhouBullet"), projectileDamage, 5, player.whoAmI, 0f, 0f);
+                }
+                if(touhouTimer < 60*20 && touhouTimer > 60*10) //phase 2 owo
+                {
+                    Vector2 moveVel = new Vector2(player.Center.X - npc.Center.X, (player.Center.Y - 500) - npc.Center.Y);
+                    float magnitude = Magnitude(moveVel);
+                    if(magnitude > 20)
+                    {
+                        moveVel *= 10f / magnitude;
+                    } 
+                    else
+                    {
+                        moveVel *= 0.5f;
+                    }          
+                    npc.velocity = moveVel;
+
+                    npc.localAI[1]++;
+                    if(npc.localAI[1] % 60 == 0)
+                    {
+                        Projectile.NewProjectile(npc.Center.X, npc.Center.Y, 10, 0, mod.ProjectileType("horizontalRainBullet"), projectileDamage, 5, player.whoAmI, 0f, 0f);
+                        Projectile.NewProjectile(npc.Center.X, npc.Center.Y, -10, 0, mod.ProjectileType("horizontalRainBullet"), projectileDamage, 5, player.whoAmI, 0f, 0f);
+                        
+                        Projectile.NewProjectile(npc.Center.X, npc.Center.Y, -5, 5, mod.ProjectileType("shenaniganTouhouBullet"), projectileDamage, 5, player.whoAmI, 0f, 0f);
+                        Projectile.NewProjectile(npc.Center.X, npc.Center.Y, 0, 7, mod.ProjectileType("shenaniganTouhouBullet"), projectileDamage, 5, player.whoAmI, 0f, 0f);
+                        Projectile.NewProjectile(npc.Center.X, npc.Center.Y, 5, 5, mod.ProjectileType("shenaniganTouhouBullet"), projectileDamage, 5, player.whoAmI, 0f, 0f);
+                    }
                 }
             }
         }
@@ -146,20 +214,18 @@ namespace CrimsonsMod.NPCs.tormentorBoss
             float magnitude = Magnitude(velocityShoot);
             if(magnitude > 0)
             {
-                velocityShoot *= 10f / magnitude;
+                velocityShoot *= (movementFacter / magnitude)/2;
             } 
             else
             {
                 velocityShoot = new Vector2(0f, 10f);
             }            
-            Projectile.NewProjectile(npc.Center.X, npc.Center.Y, velocityShoot.X, velocityShoot.Y, mod.ProjectileType("tormentorShenaniganBall"), 12, 5, player.whoAmI, 0f, 0f);
+            Projectile.NewProjectile(npc.Center.X, npc.Center.Y, velocityShoot.X, velocityShoot.Y, mod.ProjectileType("tormentorShenaniganBall"), (int)projectileDamage, 5, player.whoAmI, 0f, 0f);
         }
 
         private void moveThyArse()
         {
-            player = Main.player[npc.target]; // This will get the player target.
-
-            float velociCap = 5;
+            player = Main.player[npc.target]; // This will get the player target.*/
 
             if(npc.Center.X + 10 > player.Center.X)
             {
@@ -180,43 +246,44 @@ namespace CrimsonsMod.NPCs.tormentorBoss
             {
                 npc.velocity.Y += 0.3f;
             }
-            if(Math.Sqrt((npc.Center.Y - player.Center.Y)*(npc.Center.Y - player.Center.Y)) < 30)
+            if(Math.Abs(npc.Center.Y - player.Center.Y + 300) > 0 && Math.Abs(npc.Center.Y - player.Center.Y + 300) < 30)
             {
-                npc.velocity.Y *= 0f;
+                npc.velocity.Y *= 0.3f;
             }
             
-            if(npc.velocity.Y > velociCap)
+            if(npc.velocity.Y > movementFacter)
             {
-                npc.velocity.Y = velociCap;
+                npc.velocity.Y = movementFacter;
             }
-            if(npc.velocity.Y < velociCap * -1)
+            if(npc.velocity.Y < movementFacter * -1)
             {
-                npc.velocity.Y = velociCap * -1;
+                npc.velocity.Y = movementFacter * -1;
             }
-            if(npc.velocity.X > velociCap)
+            if(npc.velocity.X > movementFacter)
             {
-                npc.velocity.X = velociCap;
+                npc.velocity.X = movementFacter;
             }
-            if(npc.velocity.X < velociCap * -1)
+            if(npc.velocity.X < movementFacter * -1)
             {
-                npc.velocity.X = velociCap * -1;
+                npc.velocity.X = movementFacter * -1;
             }
+
         }
         private void dashyB0i()
         {
             player = Main.player[npc.target];
-
             Vector2 velocityShoot = player.Center - npc.Center;
             float magnitude = Magnitude(velocityShoot);
             if(magnitude > 0)
             {
-                velocityShoot *= 30f / magnitude;
+                velocityShoot *= movementFacter / magnitude;
             } 
             else
             {
                 velocityShoot = new Vector2(0f, 30f);
             }            
             npc.velocity = velocityShoot;
+            npc.velocity.Y *= 0.8f;
 
             float numberProjectiles = 5; // This defines how many projectiles to shoot
             Vector2 p0sition = npc.position;
@@ -225,8 +292,7 @@ namespace CrimsonsMod.NPCs.tormentorBoss
             for (int i = 0; i < numberProjectiles; i++)
             {
                 Vector2 perturbedSpeed = velocityShoot.RotatedBy(MathHelper.Lerp(-rotation, rotation, i / (numberProjectiles - 1))) * .4f; // This defines the projectile roatation and speed. .4f == projectile speed
-                Projectile.NewProjectile(p0sition.X, p0sition.Y, perturbedSpeed.X, perturbedSpeed.Y, mod.ProjectileType("tormentorShenaniganBall"), 10, 5, player.whoAmI);
-
+                Projectile.NewProjectile(p0sition.X, p0sition.Y, perturbedSpeed.X, perturbedSpeed.Y, mod.ProjectileType("tormentorShenaniganBall"), projectileDamage, 5, player.whoAmI);
             }
         }
         private void hivemindCloneLmao()
@@ -260,7 +326,7 @@ namespace CrimsonsMod.NPCs.tormentorBoss
                 player = Main.player[npc.target];
                 if(!player.active || player.dead)
                 {
-                    npc.velocity = new Vector2(0f, -50f);
+                    npc.velocity = new Vector2(0f, 50f);
                     if(npc.timeLeft > 10)
                     {
                         npc.timeLeft = 10;
@@ -268,11 +334,50 @@ namespace CrimsonsMod.NPCs.tormentorBoss
                     return;
                 }
             }
-        }				
+        }
+        bool roarFlag = false;
+        private void enrageModer()
+        {
+            if(!player.ZoneCorrupt)
+            {
+                npc.defense = 9999;
+                projectileDamage = 30;
+                movementFacter = 75f;
+                npc.damage = 60;
+                if(!roarFlag)
+                {
+        			Main.PlaySound(SoundID.Roar, npc.position, 0);
+                    roarFlag = true;
+                }
+            }
+            else
+            {
+                projectileDamage = 7;
+                movementFacter = 20f;
+                npc.defense = 4;
+                npc.damage = 20;
+                roarFlag = false;
+            }           
+        }	
         public override void NPCLoot()
 		{
             Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("tormentorBag"));
 		}
+        public override void FindFrame(int frameHeight)
+		{
+			npc.frameCounter++;
+			if (npc.frameCounter >= 10)
+			{
+				npc.frame.Y = (npc.frame.Y / frameHeight + 1) % Main.npcFrameCount[npc.type] * frameHeight;
+				npc.frameCounter = 0;
+			}
 
+			npc.spriteDirection = 0;
+
+			if (npc.rotation != 0)
+			{
+				npc.rotation = 0;
+			}
+		}
 	}
 }

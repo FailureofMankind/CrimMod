@@ -18,8 +18,8 @@ namespace CrimsonsMod.Items.tideStrider
 
 		public override void SetDefaults()
 		{
-			item.width = 30;
-			item.height = 28;
+			item.width = 20;
+			item.height = 20;
 			item.value = 10000;
 			item.rare = 1;
 			item.defense = 2;
@@ -46,11 +46,11 @@ namespace CrimsonsMod.Items.tideStrider
 
 		public override void UpdateArmorSet(Player player)
 		{
-			player.setBonus = "Defense increased by 5 when underwater\nGetting hurt gives you Aquatic Rush which gives you increased movement speed";
+			player.setBonus = "Defense increased by 10 when underwater\nGetting hurt gives you Aquatic Rush which gives you increased movement speed and melee speed";
 			
             if(player.wet)
             {
-			    player.statDefense += 5;
+			    player.statDefense += 10;
             }
 			CrimsonPlayer modplayer = player.GetModPlayer<CrimsonPlayer>(mod);
             modplayer.tideStrider = true;
